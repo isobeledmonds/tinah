@@ -17,16 +17,17 @@ header {
     align-items:baseline;
     color: #f9f98f;
     padding: 0vmax 2vmax 0 2vmax;
-    height: fit-content;
+    height: 8rem;
+    margin-top: -2rem;
 }
 
 .title {
-    font-size: 5vmax;
+    font-size: 4rem;
 
 }
 
 header p {
-    font-size: 1vmax;
+    font-size: 0.8rem;
 }
 
 .question-container {
@@ -39,15 +40,22 @@ header p {
     margin: auto;
     text-align: center;
     margin-top: -2rem;
+    line-height: 2rem;
 }
 
-.abcd {
+.abcd{
     padding-right: 1vmax;
     background-color: #f9f98f;
     border: 2.5px solid #3A1409;
     border-radius: 40px;
     font-family: 'Tan Meringue';
+    cursor: pointer;
+   
+}
 
+.clicked {
+    background-color: #3A1409;
+    color: #f9f98f;
 }
 
 .abcd span {
@@ -57,9 +65,17 @@ header p {
 
 }
 
+.clicked span {
+    padding: 5px 10px;
+    border: 1px #f9f98f solid;
+    border-radius: 75%;
+
+}
+
 .question {
     margin: 3rem 0;
     font-size: 2rem;
+    line-height: 3rem;
 }
 
 .question-container button {
@@ -98,12 +114,14 @@ header p {
     margin-top: 15px;
     margin-bottom: 35px;
     font-size: 1rem;
+    
 }
 
 
 .nav-container a {
     text-decoration: none;
     font-weight: bold;
+    color: #3A1409;
 }
 
 
@@ -111,8 +129,10 @@ header p {
 footer {
     display: flex;
     justify-content: space-between;
-    padding: 0 2vmax;
-    color:#3A1409
+    padding: 1rem 2rem;
+    color:#3A1409;
+    font-size: 0.75rem;
+    align-items: center;
 }
 
 .social-list {
@@ -138,5 +158,5 @@ footer {
   }
 
   .icon {
-    fill: #67734d;
+    fill: #f9f98f;
   }

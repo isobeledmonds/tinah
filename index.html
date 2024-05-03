@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TINAH</title>
     <link rel="stylesheet" href="./question.css">
+    <script defer src="question.js"></script>
 </head>
 <body>
 
@@ -20,16 +21,16 @@
         <p class="question">
            You've had a rough day at work.<br> What helps you unwind best?
         </p>
-        <button class="abcd">
+        <button id="a" class="abcd" onclick="handleButtonClick(1, this)">
             <span>A</span>    Probably just veg out in front of the TV or scroll on my phone. Gotta distract myself somehow.
         </button>
-        <button class="abcd">
+        <button id="b" class="abcd" onclick="handleButtonClick(2, this)">
             <span>B</span>    I should probably go for a walk or something, but I'm so wiped. Maybe a long shower?
         </button>
-        <button class="abcd">
+        <button id="c" class="abcd" onclick="handleButtonClick(3, this)">
             <span>C</span>    Honestly, I need to talk this out, but I feel like I'm always burdening my friends with my problems.
         </button>
-        <button class="abcd">
+        <button id="d" class="abcd" onclick="handleButtonClick(4, this)">
             <span>D</span>    Gym time for sure! Gotta sweat out that stress, and then a good book always helps me reset.
         </button>
     </div>
