@@ -4,13 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TINAH</title>
     <link rel="stylesheet" href="./question.css">
+    <script defer src="question.js"></script>
 </head>
 <body>
 
     <header>
         <p class="title">TINAH</p>
-        <p>What's Your Mental Wellness Healing Style?
-        </p>
+        <p class="quiz-name">What's Your Mental Wellness Healing Style?</p>
+        
     </header>
 
     <div class="question-container">
@@ -20,18 +21,24 @@
         <p class="question">
            You've had a rough day at work.<br> What helps you unwind best?
         </p>
-        <button class="abcd">
+        <button id="a" class="abcd" onclick="handleButtonClick(1, this)">
             <span>A</span>    Probably just veg out in front of the TV or scroll on my phone. Gotta distract myself somehow.
         </button>
-        <button class="abcd">
+        <button id="b" class="abcd" onclick="handleButtonClick(2, this)">
             <span>B</span>    I should probably go for a walk or something, but I'm so wiped. Maybe a long shower?
         </button>
-        <button class="abcd">
+        <button id="c" class="abcd" onclick="handleButtonClick(3, this)">
             <span>C</span>    Honestly, I need to talk this out, but I feel like I'm always burdening my friends with my problems.
         </button>
-        <button class="abcd">
+        <button id="d" class="abcd" onclick="handleButtonClick(4, this)">
             <span>D</span>    Gym time for sure! Gotta sweat out that stress, and then a good book always helps me reset.
         </button>
+    </div>
+
+    <div class="progress-container">
+        <div id="myProgress">
+             <div id="myBar"></div>
+         </div>
     </div>
 
     <div class="nav-container">
@@ -39,19 +46,20 @@
             <p><i class="bi bi-arrow-left-circle">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-                  </svg> 
-                </i>
+                  </svg>
                   Back</p>
-            
-        </div>
-        <div class="next-btn">
-            <p>Next<i class="bi bi-arrow-right-circle">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-              </svg>
             </i>
-            </p>
-        
+        </div>
+        <div>
+            <a id="nextButton" onclick="logResults(event)" href="./question_2.html" disabled>
+                    <p>Next
+                        <i class="bi bi-arrow-right-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
+                            </svg>
+                        </i>
+                    </p>
+                </a>
         </div>
     </div>
     

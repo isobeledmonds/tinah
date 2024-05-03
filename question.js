@@ -46,5 +46,13 @@ function logResults(event) {
 
 
 
+function progress () {
+    let currentArray = results.length;
+    let progressWidth = currentArray * 5;
+    let myBar = document.getElementById("myBar");
+    myBar.style.width = `${progressWidth}%`;
+}
 
-
+document.addEventListener("DOMContentLoaded", function() {
+    progress();
+});

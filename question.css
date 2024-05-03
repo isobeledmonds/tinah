@@ -39,7 +39,7 @@ header p {
     width: 50%;
     margin: auto;
     text-align: center;
-    margin-top: -2rem;
+    margin-top: 0rem;
     line-height: 2rem;
 }
 
@@ -97,7 +97,7 @@ header p {
 }
 
 .question-img-container img {
-    width: 35vmax;
+    width: 30rem;
     height: auto;
     opacity: 0.8;
    
@@ -137,7 +137,7 @@ header p {
 .nav-container a[disabled] {
     text-decoration: none;
     font-weight: bold;
-    color:#3A1409
+    color:#3A1409;
     background-color: transparent;
     border: none;
     font-family: 'Tan Meringue';
@@ -178,4 +178,27 @@ footer {
 
   .icon {
     fill: #f9f98f;
+  }
+
+  /* progress bar */
+  #myProgress {
+    width: 15%;
+    background-color:#f9f98f;
+    border: transparent;
+    border-radius: 40px;
+  }
+  
+  #myBar {
+    
+    height: 15px;
+    background-color:#3A1409;
+    border: transparent;
+    border-radius: 40px;
+  }
+
+  .progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
