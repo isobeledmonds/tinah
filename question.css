@@ -124,6 +124,25 @@ header p {
     color: #3A1409;
 }
 
+.nav-container a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A1409;
+    background-color: transparent;
+    border: none;
+    font-family: 'Tan Meringue';
+    font-size: 1rem;
+}
+
+.nav-container a[disabled] {
+    text-decoration: none;
+    font-weight: bold;
+    color:#3A1409
+    background-color: transparent;
+    border: none;
+    font-family: 'Tan Meringue';
+    font-size: 1rem;
+}
 
 
 footer {
