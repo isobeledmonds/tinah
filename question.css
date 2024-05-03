@@ -63,6 +63,7 @@ header p {
     padding: 5px 10px;
     border: 1px #3A1409 solid;
     border-radius: 75%;
+    margin-right: 0.5rem;
 
 }
 
@@ -72,6 +73,12 @@ header p {
     border-radius: 75%;
 
 }
+
+.abcd p {
+    margin-right: 0.65rem;
+    text-align: center;
+}
+
 
 .question {
     margin: 3rem 0;
@@ -85,7 +92,9 @@ header p {
     /*padding: 25px 25px 15px 10px;*/
     height: 4.75rem;
     width: 35rem;
-    padding-top: 0.5rem;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
 }
 
 
