@@ -1,0 +1,113 @@
+@font-face {
+    font-family: 'Tan Meringue';
+    src: url('TAN Meringue/TAN MERINGUE.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Tan Meringue';
+    background-color: #e36b2b;
+    margin: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items:baseline;
+    color: #f9f98f;
+    padding: 0vmax 2vmax 0 2vmax;
+    height: 8rem;
+    margin-top: -2rem;
+}
+
+.title {
+    font-size: 4rem;
+
+}
+
+.quiz-title {
+    margin: 3rem 0;
+    font-size: 2rem;
+    line-height: 3rem;
+    font-weight: bold;
+}
+
+.start-container {
+    display: flex;
+    color: #3A1409;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    margin-top: 0rem;
+    line-height: 2rem;
+}
+
+.nav-container a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A1409;
+    background-color: transparent;
+    border: none;
+    font-family: 'Tan Meringue';
+    font-size: 1.5rem;
+}
+
+.nav-button:hover {
+    color: #f9f98f;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 60px;
+    font-size: 1rem;
+    
+}
+
+#startButton {
+    background-image: url(/Users/isobeledmonds/Documents/GitHub/tinah/resources/start.png);
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    color:#3A1409;
+    font-size: 0.75rem;
+    align-items: center;
+}
+
+.social-list {
+    list-style-type: none;
+  }
+
+  .social-list-container {
+    display: flex;
+   margin: 0;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+
+  /*.social-list path {
+    cursor: pointer;
+    
+  }*/
+
+
+  .social-list svg {
+    margin-right: 2vmax;
+  }
+
+  .icon {
+    fill: #f9f98f;
+  }
