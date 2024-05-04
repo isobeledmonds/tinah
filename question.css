@@ -84,6 +84,8 @@ header p {
     margin: 3rem 0;
     font-size: 2rem;
     line-height: 3rem;
+    font-family: helvetica;
+    font-weight: bold;
 }
 
 .question-container button {
