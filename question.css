@@ -154,6 +154,10 @@ header p {
     font-size: 1rem;
 }
 
+.nav-button:hover {
+    color: #f9f98f;
+}
+
 
 footer {
     display: flex;
