@@ -93,7 +93,7 @@ header {
 
 .nav-button {
     display: flex;
-    background-image: url(/Users/isobeledmonds/Documents/GitHub/tinah/resources/start.png);
+    background-image: url(/resources/start.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
