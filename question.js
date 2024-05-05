@@ -2,9 +2,19 @@
 
 
 
- let lastClicked = null;
-let results = [];
+let lastClicked = null;
+var results = [];
 let nextButton = document.getElementById("nextButton");
+
+
+results = JSON.stringify(results)
+
+localStorage.setItem("results", results)
+//localStorage.setItem("results", JSON.stringify(results));
+
+
+//var storedResults = JSON.parse(localStorage.getItem("results"));
+
 
 function handleButtonClick(buttonId, currentButton) {
     // Remove 'clicked' class from previously clicked button
@@ -75,4 +85,6 @@ document.addEventListener("DOMContentLoaded", function() {
 //document.addEventListener("DOMContentLoaded", function() {
   //  progress();
 //});
+
+
 
