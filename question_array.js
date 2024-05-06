@@ -20,9 +20,6 @@
 //
 
 
-
-
-
 let questionArray = [
     "You've had a rough day at work.<br> What helps you unwind best?",
     "Things have been piling up lately, and you're starting to feel totally overwhelmed. <br>What's your typical reaction?",

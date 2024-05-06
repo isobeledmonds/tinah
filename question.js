@@ -3,17 +3,11 @@
 
 
 let lastClicked = null;
-var results = [];
+let results = [];
 let nextButton = document.getElementById("nextButton");
+results = JSON.parse(localStorage.getItem("results")) || [];
 
-
-results = JSON.stringify(results)
-
-localStorage.setItem("results", results)
-//localStorage.setItem("results", JSON.stringify(results));
-
-
-//var storedResults = JSON.parse(localStorage.getItem("results"));
+localStorage.clear();
 
 
 function handleButtonClick(buttonId, currentButton) {
@@ -43,31 +37,90 @@ function handleButtonClick(buttonId, currentButton) {
 
 function logResults(event) {
     if (nextButton.hasAttribute("disabled")) {
-    event.preventDefault();
+        event.preventDefault();
     }
     if (lastClicked !== null) {
-        results.push(lastClicked.getAttribute("id"));; // Push the buttonId to results array
-        console.log("Results:", results);
+        results.push(lastClicked.getAttribute("id"));
+        localStorage.setItem("results", JSON.stringify(results));
     } else {
         console.log("No button has been clicked yet.");
     }
+};
+
+function removeResults(event) {
+    if (results.length === 0) {
+        console.log("No results to remove.");
+        return; // Exit early if there are no results to remove
+    }
+    
+    results.pop(); // Remove the last item from the results array
+    
+    // Update local storage
+    localStorage.setItem("results", JSON.stringify(results));
+    
+    console.log("Last result removed.");
 }
 
-let question = document.querySelectorAll(".question");  
-let questionNumber = 0; // Initialize questionNumber outside the loop
+
+
+
+
+let questionsSelector = document.querySelectorAll(".question");
+let questionIdSelector = document.querySelectorAll(".question");
 
 function progress() {
-    
-    question.forEach((questionElement) => {
-        let number = parseInt(questionElement.textContent);
-        if (!isNaN(number) && number >= 1) {
-            questionNumber = number; // Update questionNumber inside the loop
+    let questionNumber = 0; // Initialize questionNumber outside the loop
+
+    questionsSelector.forEach((questionElement) => {
+        let question = parseInt(questionElement.textContent);
+        if (!isNaN(question) && question >= 1) {
+            questionNumber = question; // Update questionNumber inside the loop
         }
     });
-    let progressWidth = (questionNumber) * 4.54545454545;
+};
+
+
+let questionTexts = document.querySelectorAll(".question");
+let images = document.querySelectorAll(".question-img-container img");
+
+images.forEach((image, index) => {
+    let questionText = questionTexts[index].textContent;
+    image.src = `./resources/${questionText.trim()}.png`;
+});
+
+
+
+//document.addEventListener("DOMContentLoaded", function() {
+  //  progress();
+//});
+    //questionIdSelector.forEach((questionIdSelectorElement, index) => {
+      //  let questionNumber = parseInt(questionIdSelectorElement.textContent);
+        //if (!isNaN(questionNumber) && questionNumber >= 1) {
+          //  let questionId = `${index + 1}`; // Generate a unique ID for each question
+            //questionIdSelectorElement.setAttribute("id", questionId);
+       // }
+   // });
+
+
+   // let progressWidth = (questionNumber - 1) * 4.54545454545;
+   /// let myBar = document.getElementById("myBar");
+   // myBar.style.width = `${progressWidth}%`;
+//}
+
+///document.addEventListener("DOMContentLoaded", function() {
+   // progress();
+//});
+
+
+
+
+function progress() {
+    let currentArray = results.length;
+    let totalQuestions = 22; // Total number of questions
+    let progressWidth = (currentArray / totalQuestions) * 100; // Calculate progress as a percentage
     let myBar = document.getElementById("myBar");
     myBar.style.width = `${progressWidth}%`;
-};
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     progress();
@@ -75,16 +128,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-//function progress () {
- //   let currentArray = results.length;
- //   let progressWidth = currentArray * 5;
-   // let myBar = document.getElementById("myBar");
-    //myBar.style.width = `${progressWidth}%`;
-//}
-
-//document.addEventListener("DOMContentLoaded", function() {
-  //  progress();
-//});
-
-
-
+//question outcomes
+    
+function displayResults(arr) { 
+    let candidate = null; 
+    let count = 0; 
+    for (let num of arr) { 
+        if (count === 0) { 
+            candidate = num; 
+        } 
+        count += (num === candidate) 
+            ? 1 : -1; 
+    } 
+    return candidate; 
+} 
+console.log(displayResults(results));  
