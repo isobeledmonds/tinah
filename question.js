@@ -59,23 +59,13 @@ function removeResults(event) {
     localStorage.setItem("results", JSON.stringify(results));
     
     console.log("Last result removed.");
-}
+};
 
 function restart(event) {
     localStorage.clear();
-}
-
-function resultsReveal(event) {
-if (nextButton.hasAttribute("disabled") && currentArray < 22) {
-    event.preventDefault();
-}
-if (lastClicked !== null) {
-    results.push(lastClicked.getAttribute("id"));
-    localStorage.setItem("results", JSON.stringify(results));
-} else {
-    console.log("No button has been clicked yet.");
-}
 };
+
+
 
 
 
@@ -107,9 +97,8 @@ images.forEach((image, index) => {
 
 
 
-
+let currentArray = results.length;
 function progress() {
-    let currentArray = results.length;
     let totalQuestions = 22; // Total number of questions
     let progressWidth = (currentArray / totalQuestions) * 100; // Calculate progress as a percentage
     let myBar = document.getElementById("myBar");
@@ -138,3 +127,15 @@ function displayResults(arr) {
 } 
 console.log(displayResults(results));  
 console.log(results);
+
+function resultsReveal(event) {
+    if (nextButton.hasAttribute("disabled") || currentArray < 22) {
+        event.preventDefault();
+    }
+    if (lastClicked !== null) {
+        results.push(lastClicked.getAttribute("id"));
+        localStorage.setItem("results", JSON.stringify(results));
+    } else {
+        console.log("No button has been clicked yet.");
+    }
+    };
