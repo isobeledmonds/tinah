@@ -7,7 +7,7 @@ let results = [];
 let nextButton = document.getElementById("nextButton");
 results = JSON.parse(localStorage.getItem("results")) || [];
 
-localStorage.clear();
+//localStorage.clear();
 
 
 function handleButtonClick(buttonId, currentButton) {
@@ -61,6 +61,22 @@ function removeResults(event) {
     console.log("Last result removed.");
 }
 
+function restart(event) {
+    localStorage.clear();
+}
+
+function resultsReveal(event) {
+if (nextButton.hasAttribute("disabled") && currentArray < 22) {
+    event.preventDefault();
+}
+if (lastClicked !== null) {
+    results.push(lastClicked.getAttribute("id"));
+    localStorage.setItem("results", JSON.stringify(results));
+} else {
+    console.log("No button has been clicked yet.");
+}
+};
+
 
 
 
@@ -88,28 +104,6 @@ images.forEach((image, index) => {
     image.src = `./resources/${questionText.trim()}.png`;
 });
 
-
-
-//document.addEventListener("DOMContentLoaded", function() {
-  //  progress();
-//});
-    //questionIdSelector.forEach((questionIdSelectorElement, index) => {
-      //  let questionNumber = parseInt(questionIdSelectorElement.textContent);
-        //if (!isNaN(questionNumber) && questionNumber >= 1) {
-          //  let questionId = `${index + 1}`; // Generate a unique ID for each question
-            //questionIdSelectorElement.setAttribute("id", questionId);
-       // }
-   // });
-
-
-   // let progressWidth = (questionNumber - 1) * 4.54545454545;
-   /// let myBar = document.getElementById("myBar");
-   // myBar.style.width = `${progressWidth}%`;
-//}
-
-///document.addEventListener("DOMContentLoaded", function() {
-   // progress();
-//});
 
 
 
@@ -143,3 +137,4 @@ function displayResults(arr) {
     return candidate; 
 } 
 console.log(displayResults(results));  
+console.log(results);

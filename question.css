@@ -81,7 +81,7 @@ header p {
 
 
 .question {
-    margin: 3rem 0;
+    margin: 1.5rem 0;
     font-size: 2rem;
     line-height: 3rem;
     font-family: helvetica;
@@ -109,10 +109,10 @@ header p {
 }
 
 .question-img-container img {
-    width: 25rem;
+    width: 28rem;
     height: auto;
     opacity: 0.8;
-   
+    margin-top: 2rem;
 }
 
 
@@ -124,7 +124,7 @@ header p {
     align-items: center;
     margin: auto;
     margin-top: 15px;
-    margin-bottom: 35px;
+    margin-bottom: 0px;
     font-size: 1rem;
     
 }
@@ -217,4 +217,19 @@ footer {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-top: 16px;
+  }
+  
+
+  .restart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: -16px;
+  
+  }
+
+  .restart-container i {
+    color: #3A1409;
   }
