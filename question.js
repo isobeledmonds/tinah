@@ -71,19 +71,19 @@ function restart(event) {
 
 
 
-let questionsSelector = document.querySelectorAll(".question");
-let questionIdSelector = document.querySelectorAll(".question");
+//let questionsSelector = document.querySelectorAll(".question");
+//let questionIdSelector = document.querySelectorAll(".question");
 
-function progress() {
-    let questionNumber = 0; // Initialize questionNumber outside the loop
+//function progress() {
+ //   let questionNumber = 0; // Initialize questionNumber outside the loop
 
-    questionsSelector.forEach((questionElement) => {
-        let question = parseInt(questionElement.textContent);
-        if (!isNaN(question) && question >= 1) {
-            questionNumber = question; // Update questionNumber inside the loop
-        }
-    });
-};
+ //   questionsSelector.forEach((questionElement) => {
+ //       let question = parseInt(questionElement.textContent);
+ //       if (!isNaN(question) && question >= 1) {
+ //           questionNumber = question; // Update questionNumber inside the loop
+ //       }
+ //   });
+//};
 
 
 let questionTexts = document.querySelectorAll(".question");
@@ -129,7 +129,7 @@ console.log(displayResults(results));
 console.log(results);
 
 function resultsReveal(event) {
-    if (nextButton.hasAttribute("disabled") || currentArray < 22) {
+    if (nextButton.hasAttribute("disabled") || currentArray < 21) {
         event.preventDefault();
     }
     if (lastClicked !== null) {
@@ -143,11 +143,27 @@ function resultsReveal(event) {
 
 
 let input = document.querySelector(".input")
+let enterButton = document.querySelector(".enter-button")
 
-   function enter(event) {
-    if (input !== null) {
+function enter(event) {
+    if (input.value.trim() === "" || (!input.value.includes("@") && !input.value.includes("."))) {
         event.preventDefault();
-    }
+        enterButton.setAttribute("disabled", "disabled");}
+        else {
+            enterButton.removeAttribute("disabled");
+        }
+};
 
-   }
+   //function enter(event) {
+ //  if (input.value.trim() === "") {
+  //      event.preventDefault();
+  //  }
+
+  // };
+
+  // if (input.value.trim() === "") {
+  //  enterButton.classList.add("disabled");
+//} else {
+ //   enterButton.classList.remove("disabled");
+//};
     

@@ -236,4 +236,10 @@ footer {
 
   .restart-container i {
     color: #3A1409;
+    
+  }
+
+  .restart-container i:hover {
+    color:#f9f98f
+    
   }
