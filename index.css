@@ -18,7 +18,11 @@ header {
     color: #f9f98f;
     padding: 0vmax 2vmax 0 2vmax;
     height: 8rem;
-    margin-top: -2rem;
+    margin-top: 1rem;
+}
+
+.logo {
+height: 8rem;
 }
 
 .title {
