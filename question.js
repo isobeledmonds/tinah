@@ -6,6 +6,7 @@ let lastClicked = null;
 let results = [];
 let nextButton = document.getElementById("nextButton");
 results = JSON.parse(localStorage.getItem("results")) || [];
+let emailList = []
 
 //localStorage.clear();
 
@@ -66,22 +67,6 @@ function restart(event) {
 };
 
 
-
-
-
-//let questionsSelector = document.querySelectorAll(".question");
-//let questionIdSelector = document.querySelectorAll(".question");
-
-//function progress() {
- //   let questionNumber = 0; // Initialize questionNumber outside the loop
-
- //   questionsSelector.forEach((questionElement) => {
- //       let question = parseInt(questionElement.textContent);
- //       if (!isNaN(question) && question >= 1) {
- //           questionNumber = question; // Update questionNumber inside the loop
- //       }
- //   });
-//};
 
 
 let questionTexts = document.querySelectorAll(".question");
@@ -150,18 +135,9 @@ function enter(event) {
         else {
             enterButton.removeAttribute("disabled");
         }
+        email = document.querySelector(".input").value;
+        emailList.push(email);  
+        localStorage.setItem("emails", JSON.stringify(emailList));
 };
 
-   //function enter(event) {
- //  if (input.value.trim() === "") {
-  //      event.preventDefault();
-  //  }
 
-  // };
-
-  // if (input.value.trim() === "") {
-  //  enterButton.classList.add("disabled");
-//} else {
- //   enterButton.classList.remove("disabled");
-//};
-    
