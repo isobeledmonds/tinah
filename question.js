@@ -62,10 +62,8 @@ function removeResults(event) {
 };
 
 function restart(event) {
-    localStorage.clear();
+    localStorage.removeItem("results");
 };
-
-
 
 
 

@@ -50,4 +50,4 @@ resultContent.forEach((contentElement, index) => {
     contentElement.textContent = resultContentObjs[key];
 });
 
-localStorage.clear();
+localStorage.removeItem("results");
