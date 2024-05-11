@@ -214,6 +214,11 @@ footer {
     color: #3A1409;
 }
 
+.enter-button p {
+    padding: 0 1rem;
+    margin: 1rem;
+}
+
 .input-container{
     margin-bottom: 4rem;
     display: flex;

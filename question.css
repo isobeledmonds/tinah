@@ -81,6 +81,7 @@ header p {
 .abcd p {
     margin-right: 0.65rem;
     text-align: center;
+    width: 100%;
 }
 
 

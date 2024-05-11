@@ -50,4 +50,16 @@ resultContent.forEach((contentElement, index) => {
     contentElement.textContent = resultContentObjs[key];
 });
 
-localStorage.removeItem("results");
+function saveResults() {
+    let resultMap = {};
+    for (let i = 0; i < emailList.length; i++) {
+        let email = emailList[i];
+        resultMap[email] = results;
+    }
+    localStorage.setItem("resultList", JSON.stringify(resultMap));
+    localStorage.removeItem("results");
+    localStorage.removeItem("emailList");
+    console.log(resultMap);
+}
+
+

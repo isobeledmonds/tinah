@@ -5,10 +5,11 @@
     <title>TINAH</title>
     <link rel="stylesheet" href="./index.css">
     <script defer src="question.js"></script>
+    <link rel="icon" type="img" href="./resources/TINAH Mascot-raw.png">
 </head>
 <body>
     <header>
-        <a href="./index.html" ><img class="logo" src="./resources/tinah_logo.png"></a>
+        <a href="./index.html" ><img class="logo" src="./resources/tinah_logo.png" onclick="restart(event)"></a>
         
     </header>
 
@@ -24,7 +25,7 @@
             <input class="input">
         </input>
         <div>
-            <a class="enter-button" href="./results.html" onclick="enter(event)" disabled>enter</a>
+            <a class="enter-button" href="./results.html" onclick="enter(event); saveResults()" disabled><p>Unlock results</p></a>
     </div>
         </div>
         </div>
