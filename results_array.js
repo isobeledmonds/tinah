@@ -5,14 +5,14 @@
 let getResults = JSON.parse(localStorage.getItem("results")) || [];
 
 let resultObjs = {
-"a": "Not really aware...",
-"b": "Know what I need, unsure of path...",
-"c": "Know what I need, avoiding it...",
-"d": "Crystal clear on needs..."
+"a": "Sounds like you don’t know where to start?",
+"b": "Sounds like you want to make some changes, but don’t know which path is best for you?",
+"c": "Sounds like you are so ready to take some positive steps to improving your mental wellbeing? It’s time to take that first step!",
+"d": "Yay congratulations - Sounds like you are already working on improving your mental wellbeing!"
 }
 
 let resultContentObjs = {
-"a": "Not really aware...",
+"a": "<p>It sounds like maybe you’re feeling unsure of where to begin to help yourself. This could be a sign you subconsciously feel overwhelmed or disconnected from your own needs. This may be because of a lack of awareness of your personal mental and emotional state, or you have shut off your emotions  over time because they felt too much to handle.</p>",
 "b": "Know what I need, unsure of path...",
 "c": "Know what I need, avoiding it...",
 "d": "Crystal clear on needs..."
@@ -39,15 +39,15 @@ function displayResults(arr) {
 console.log("Results:", results);
 
 
-let key = displayResults(results);
+let index = displayResults(results);
 
 
 resultTitle.forEach((titleElement, index) => {
-    titleElement.textContent = resultObjs[key];
+    titleElement.textContent = resultObjs[index];
 });
 
 resultContent.forEach((contentElement, index) => {
-    contentElement.textContent = resultContentObjs[key];
+    contentElement.innerHTML = resultContentObjs[index];
 });
 
 function saveResults() {

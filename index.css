@@ -113,6 +113,10 @@ footer {
     color:#3A1409;
     font-size: 0.75rem;
     align-items: center;
+    position: fixed;
+Width: 100%;
+bottom: 0;
+    
 }
 
 .social-list {
@@ -124,6 +128,7 @@ footer {
    margin: 0;
     justify-content: flex-end;
     align-items: center;
+    padding-right: 2rem;
   }
 
 
@@ -155,11 +160,12 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
+    width: 75%;
     margin: auto;
     text-align: center;
     margin-top: 0rem;
     line-height: 2rem;
+    text-align: justify;
 }
 
 
@@ -228,4 +234,19 @@ footer {
 }
 
 
+.results-container{
+    width: 80%;
+    display: flex;
+    color: #3A1409;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: justify;
+    
+}
 
+.healing-style-title{
+    font-size: 1.25rem;
+
+}
