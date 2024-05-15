@@ -109,7 +109,7 @@ height: 8rem;
 footer {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 0rem;
+    padding: 1rem 2rem;
     color:#3A1409;
     font-size: 0.75rem;
     align-items: center;
