@@ -138,6 +138,10 @@
     margin-bottom: -0.25rem;
   }
 
+  #spotify {
+    margin-bottom: -0.1rem;
+  }
+
 
 .hidden, .hidden1 {
     display: none;
