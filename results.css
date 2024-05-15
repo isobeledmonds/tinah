@@ -1,0 +1,157 @@
+.email_submission {
+    font-family: 'Tan Meringue';
+    margin-bottom: 3rem;
+}
+
+.email-container {
+    font-family: helvetica;
+    position: relative;
+}
+
+.read-more h3{
+    text-align: center;
+}
+
+.email-container span {
+    font-weight: bold;
+}
+
+.email-container p {
+  padding-top: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.email-container ul {
+    padding-top: 1.5rem;
+    font-size: 1.25rem;
+  }
+
+
+
+.email-container h3 {
+    font-family:'Tan Meringue' ;
+}
+
+
+.hidden {
+    visibility: collapse;
+    opacity: 0;
+    transition: opacity 1s, visibility 1s;
+  }
+
+
+.hidden1 {
+    visibility: collapse;
+    opacity: 0;
+    transition: opacity 1s, visibility 1s;
+}
+
+
+.show-content {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s, visibility 1s;
+  }
+
+.show-content1{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s, visibility 1s;
+}
+
+.button:hover{
+    animation: bounceDown 0.5s ease;
+    animation-iteration-count: 1;
+  }
+
+  @keyframes bounceDown {
+    0% {
+      transform: translateY(0);
+    }
+    25% {
+      transform: translateY(10px); /* Move down slightly */
+    }
+    50% {
+      transform: translateY(0); /* Back to original position */
+    }
+    75% {
+      transform: translateY(5px); /* Slightly down again */
+    }
+    100% {
+      transform: translateY(0); /* Back to original position */
+    }
+  }
+
+.button:active{
+    animation: click 0.2s ease;
+}
+@keyframes click {
+    0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(10px); /* Move down slightly */
+      }
+      100% {
+        transform: translateY(0); /* Back to original position */
+      }
+}
+
+
+  .button {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+
+.fom{
+    padding-top: 2rem;
+  }
+
+  .button svg {
+    margin-top: -0.5rem;
+  }
+
+
+  .links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   font-size: 1.25rem;
+   padding-top: 1.5rem;
+
+  }
+
+  .links a{
+    margin-right: 3rem;
+    text-decoration: none;
+    color: #3A1409;
+  }
+
+  .links svg {
+    margin-right: 0.5rem;
+  }
+
+  #youtube{
+    margin-bottom: -0.25rem;
+  }
+
+
+.hidden, .hidden1 {
+    display: none;
+}
+
+.read-more, .find-out-more {
+    margin-bottom: 20px;
+    transition: height 0.3s ease;
+}
+
+.always-visible {
+    margin-bottom: 4rem;
+}
+
+.break-line {
+    margin-top: 4rem;
+}
