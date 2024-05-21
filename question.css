@@ -163,7 +163,9 @@ header p {
 
 .nav-button:hover {
     color: #f9f98f;
+    cursor: pointer;
 }
+
 
 
 footer {

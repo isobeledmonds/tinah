@@ -1,4 +1,3 @@
-
 //let questionArray = Arrat.from(Object.entries(questions), ([key, value]) => value);
 
 //let answerArray= []
@@ -137,8 +136,17 @@ questions.forEach((questionElement) => {
 });
 
 
+let images = document.querySelectorAll(".question-img-container img");
 
+// Update image sources based on question number
+function updateImages() {
+    questions.forEach((questionElement) => {
+        let questionNumber = parseInt(questionElement.textContent);
+        if (!isNaN(questionNumber) && questionNumber >= 1 && questionNumber <= questionArray.length) {
+            images.src = `./resources/${questionNumber}.png`; // Update image source based on question number
+        }
+    });
+}
 
-
-
-
+// Call the updateImages function initially to set the initial image sources
+updateImages();

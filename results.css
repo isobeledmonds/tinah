@@ -34,30 +34,41 @@
 
 
 .hidden {
-    visibility: collapse;
+    display: none;
     opacity: 0;
     transition: opacity 1s, visibility 1s;
   }
-
-
-.hidden1 {
-    visibility: collapse;
+  
+  .hidden1 {
+    display: none;
     opacity: 0;
     transition: opacity 1s, visibility 1s;
-}
-
-
-.show-content {
-    visibility: visible;
+  }
+  
+  .show-content {
+    display: block;
     opacity: 1;
     transition: opacity 1s, visibility 1s;
   }
-
-.show-content1{
-    visibility: visible;
+  
+  .show-content1 {
+    display: block;
     opacity: 1;
     transition: opacity 1s, visibility 1s;
-}
+  }
+  
+  .button {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .fom {
+    padding-top: 2rem;
+  }
+  
 
 .button:hover{
     animation: bounceDown 0.5s ease;
@@ -97,18 +108,6 @@
       }
 }
 
-
-  .button {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
-  }
-
-.fom{
-    padding-top: 2rem;
-  }
 
   .button svg {
     margin-top: -0.5rem;
