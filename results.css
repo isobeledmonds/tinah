@@ -1,6 +1,7 @@
 .email_submission {
     font-family: 'Tan Meringue';
     margin-bottom: 3rem;
+    margin-top: 2rem;
 }
 
 .email-container {
@@ -26,6 +27,10 @@
     font-size: 1.25rem;
   }
 
+  .healing-style-title {
+    text-align: center;
+    width: 80%;
+  }
 
 
 .email-container h3 {

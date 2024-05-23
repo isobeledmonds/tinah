@@ -296,7 +296,7 @@ function resultsReveal(event) {
         console.log("No button has been clicked yet.");
     }
     };
-
+ 
 
 
 let input = document.querySelector(".input")
