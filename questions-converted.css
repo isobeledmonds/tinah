@@ -79,6 +79,8 @@ header p {
     margin-right: 0.65rem;
     text-align: center;
     width: 100%;
+    color: #3A1409;
+
 }
 
 .question {
@@ -92,7 +94,7 @@ header p {
 .question-container button {
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-    height: 4.75rem;
+    height: 5rem;
     width: 35rem;
     padding-top: 0;
     display: flex;
