@@ -151,12 +151,18 @@ header p {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
-    color: #3A1409;
+    color:#3A1409;
     font-size: 0.75rem;
     align-items: center;
+
+    
 }
 
 .social-list {
