@@ -6,18 +6,25 @@
     font-display: swap;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: 'Tan Meringue';
     background-color: #e36b2b;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     color: #f9f98f;
-    padding: 0 2.4rem 0 2.4rem; /* Adjusted from 2vmax */
+    padding: 0 2.4rem;
     height: 8rem;
     margin-top: 1rem;
 }
@@ -34,6 +41,14 @@ header p {
     font-size: 0.8rem;
 }
 
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .question-container {
     display: flex;
     color: #3A1409;
@@ -43,7 +58,6 @@ header p {
     width: 50%;
     margin: auto;
     text-align: center;
-    margin-top: 0;
     line-height: 2rem;
 }
 
@@ -52,7 +66,7 @@ header p {
     background-color: #f9f98f;
     border: 0.15625rem solid #3A1409;
     border-radius: 2.5rem;
-    font-family: 'helvetica';
+    font-family: 'Helvetica';
     cursor: pointer;
     font-size: 1.2rem;
 }
@@ -79,14 +93,13 @@ header p {
     margin-right: 0.65rem;
     text-align: center;
     width: 100%;
-
 }
 
 .question {
     margin: 1.5rem 0;
     font-size: 2rem;
     line-height: 3rem;
-    font-family: helvetica;
+    font-family: 'Helvetica';
     font-weight: bold;
 }
 
@@ -151,18 +164,14 @@ header p {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
-    color:#3A1409;
+    color: #3A1409;
     font-size: 0.75rem;
     align-items: center;
-
-    
 }
 
 .social-list {
@@ -184,7 +193,7 @@ footer {
     fill: #f9f98f;
 }
 
-/* progress bar */
+/* Progress bar */
 #myProgress {
     width: 15%;
     background-color: #f9f98f;
@@ -213,6 +222,8 @@ footer {
     align-items: center;
     width: 100%;
     margin-top: -1rem;
+    padding-bottom: 2rem;
+    flex: 1;
 }
 
 .restart-container i {
@@ -222,6 +233,7 @@ footer {
 .restart-container i:hover {
     color: #f9f98f;
 }
+
 
 
 
