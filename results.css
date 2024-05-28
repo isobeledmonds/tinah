@@ -126,7 +126,7 @@
     align-items: center;
    font-size: 1.25rem;
    padding-top: 1.5rem;
-
+    text-align: left;
   }
 
   .links a{
@@ -176,6 +176,10 @@
   .button svg {
     width: 2.2rem;
     height: 2.2rem;
+  }
+
+  .links a{
+    margin-right: 2rem;
   }
 }
 
