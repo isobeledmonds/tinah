@@ -1,0 +1,266 @@
+@font-face {
+    font-family: 'Tan Meringue';
+    src: url('TAN Meringue/TAN MERINGUE.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Tan Meringue';
+    background-color: #e36b2b;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #f9f98f;
+    padding: 0 2.4rem 0 2.4rem; /* Adjusted from 2vmax */
+    height: 8rem;
+    margin-top: 1rem;
+}
+
+.logo {
+    height: 8rem;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+header p {
+    font-size: 0.8rem;
+}
+
+.question-container {
+    display: flex;
+    color: #3A1409;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    margin-top: 0;
+    line-height: 2rem;
+}
+
+.abcd {
+    padding-right: 1rem;
+    background-color: #f9f98f;
+    border: 0.15625rem solid #3A1409;
+    border-radius: 2.5rem;
+    font-family: 'helvetica';
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.clicked {
+    background-color: #3A1409;
+    color: #f9f98f;
+}
+
+.abcd span {
+    padding: 0.3125rem 0.625rem;
+    border: 0.0625rem #3A1409 solid;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.clicked span {
+    padding: 0.3125rem 0.625rem;
+    border: 0.0625rem #f9f98f solid;
+    border-radius: 50%;
+}
+
+.abcd p {
+    margin-right: 0.65rem;
+    text-align: center;
+    width: 100%;
+}
+
+.question {
+    margin: 1.5rem 0;
+    font-size: 2rem;
+    line-height: 3rem;
+    font-family: helvetica;
+    font-weight: bold;
+}
+
+.question-container button {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    height: 4.75rem;
+    width: 35rem;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+}
+
+.question-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-img-container img {
+    width: 28rem;
+    height: auto;
+    opacity: 0.8;
+    margin-top: 2rem;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    margin-top: 0.9375rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.nav-container a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A1409;
+    background-color: transparent;
+    border: none;
+    font-family: 'Tan Meringue';
+    font-size: 1rem;
+}
+
+.nav-container a[disabled] {
+    text-decoration: none;
+    font-weight: bold;
+    color: #3A1409;
+    background-color: transparent;
+    border: none;
+    font-family: 'Tan Meringue';
+    font-size: 1rem;
+}
+
+.nav-button:hover {
+    color: #f9f98f;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    color: #3A1409;
+    font-size: 0.75rem;
+    align-items: center;
+}
+
+.social-list {
+    list-style-type: none;
+}
+
+.social-list-container {
+    display: flex;
+    margin: 0;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.social-list svg {
+    margin-right: 2rem;
+}
+
+.icon {
+    fill: #f9f98f;
+}
+
+/* progress bar */
+#myProgress {
+    width: 15%;
+    background-color: #f9f98f;
+    border: transparent;
+    border-radius: 2.5rem;
+}
+
+#myBar {
+    height: 0.9375rem;
+    background-color: #3A1409;
+    border: transparent;
+    border-radius: 2.5rem;
+}
+
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.restart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: -1rem;
+}
+
+.restart-container i {
+    color: #3A1409;
+}
+
+.restart-container i:hover {
+    color: #f9f98f;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 800px){
+    html {
+        font-size: 10px; 
+    }
+
+    .question-container {
+        width: 75%;
+        margin: auto;
+    
+    }
+
+    .question-img-container img {
+        width: 25rem;
+        height: auto;
+        margin-top: 4rem;
+       
+    }
+    
+
+    .social-list svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    #restart-button svg {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .nav-button svg {
+        width: 1.3rem;
+        height: 1.3rem;
+        padding-top: 0.3rem;
+    }
+
+footer {
+    flex-direction: row;
+    text-align: center;
+    padding-left: 2rem;
+}
+
+  }
+  
