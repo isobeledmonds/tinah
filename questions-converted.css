@@ -198,7 +198,7 @@ footer {
 
 /* Progress bar */
 #myProgress {
-    width: 15%;
+    width: 10rem;
     background-color: #f9f98f;
     border: transparent;
     border-radius: 2.5rem;
