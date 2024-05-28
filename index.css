@@ -280,9 +280,12 @@ footer {
       width: 1.5rem;
       height: 1.5rem;
     }
+
+
 footer {
     position: fixed;
     bottom: 0;
+    margin-right: 0;
 }
 
   }
