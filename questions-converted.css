@@ -135,7 +135,7 @@ header p {
 .nav-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 65%;
     justify-content: space-evenly;
     align-items: center;
     margin: auto;
