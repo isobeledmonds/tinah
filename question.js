@@ -146,6 +146,8 @@ function onNextButtonClick(event) {
     });
 
     progress();
+
+    document.querySelectorAll("nav-cintainer a").setAttribute("disabled");
 }
 
 
