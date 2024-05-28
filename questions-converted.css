@@ -26,27 +26,29 @@ header {
     color: #f9f98f;
     padding: 0 2.4rem;
     height: 8rem;
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 .logo {
     height: 8rem;
 }
 
-.title {
-    font-size: 4rem;
-}
+
 
 header p {
     font-size: 0.8rem;
+    word-break: break-word;
+    text-align: right;
 }
 
 .content {
+    width: 80%;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
 }
 
 .question-container {
@@ -55,7 +57,7 @@ header p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     margin: auto;
     text-align: center;
     line-height: 2rem;
@@ -279,6 +281,25 @@ footer {
     flex-direction: row;
     text-align: center;
     padding-left: 2rem;
+}
+
+.logo {
+    height: 7rem;
+}
+
+
+
+header p {
+    font-size: 0.7rem;
+    word-break: break-word;
+    text-align: right;
+}
+
+
+header {
+    padding: 0 1.8rem;
+
+
 }
 
   }
