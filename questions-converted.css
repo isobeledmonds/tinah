@@ -27,6 +27,7 @@ header {
     padding: 0 2.4rem;
     height: 8rem;
     margin: 1rem 0;
+    flex-wrap: wrap;
 }
 
 .logo {
@@ -283,24 +284,7 @@ footer {
     padding-left: 2rem;
 }
 
-.logo {
-    height: 7rem;
-}
-
-
-
-header p {
-    font-size: 0.7rem;
-    word-break: break-word;
-    text-align: right;
-}
-
-
-header {
-    padding: 0 1.8rem;
-
 
 }
 
-  }
   
