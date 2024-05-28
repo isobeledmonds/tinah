@@ -108,6 +108,10 @@ height: 8rem;
 }*/
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
@@ -283,9 +287,9 @@ footer {
 
 
 footer {
-    position: fixed;
-    bottom: 0;
-    margin-right: 0;
+    flex-direction: row;
+    text-align: center;
+    padding-left: 2rem;
 }
 
   }
