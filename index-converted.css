@@ -17,29 +17,28 @@ body {
     margin: 0;
 }
 
-
 header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     color: #f9f98f;
-    padding: 0 2.4rem;
-    height: 8rem;
+    padding: 0 2.4rem; /* 2.4rem is 38.4px */
+    height: 8rem; /* 8rem is 128px */
     margin: 1rem 0;
     flex-wrap: wrap;
 }
 
 .logo {
-    height: 8rem;
+    height: 8rem; /* 8rem is 128px */
 }
 
 .title {
-    font-size: 4rem;
-
+    font-size: 4rem; /* 4rem is 64px */
 }
 
 .content {
     width: 80%;
+    height: fit-content;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -52,22 +51,19 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
 }
 
 .start-img-container img {
-    width: 25rem;
+    width: 25rem; /* 25rem is 400px */
     height: auto;
     opacity: 0.8;
-   
 }
 
 .quiz-title {
-    margin-top: 3.5rem ;
+    margin-top: 3.5rem; /* 3.5rem is 56px */
     margin-bottom: 1rem;
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 2rem; /* 2rem is 32px */
+    line-height: 3rem; /* 3rem is 48px */
     font-weight: bold;
 }
 
@@ -80,8 +76,8 @@ header {
     width: 40%;
     margin: auto;
     text-align: center;
-    margin-top: 0rem;
-    line-height: 2rem;
+    margin-top: 0;
+    line-height: 2rem; /* 2rem is 32px */
 }
 
 .nav-container a {
@@ -91,7 +87,7 @@ header {
     background-color: transparent;
     border: none;
     font-family: 'Tan Meringue';
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 1.5rem is 24px */
 }
 
 /*.nav-container a:hover {
@@ -105,9 +101,9 @@ header {
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 25px;
-    margin-bottom: 60px;
-    font-size: 1rem;    
+    margin-top: 1.5625rem; /* 25px */
+    margin-bottom: 3.75rem; /* 60px */
+    font-size: 1rem; /* 1rem is 16px */
 }
 
 .nav-button {
@@ -116,7 +112,7 @@ header {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 2.5rem;
+    padding: 2.5rem; /* 2.5rem is 40px */
     align-items: center;
 }
 
@@ -129,44 +125,42 @@ footer {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem; /* 1rem is 16px, 2rem is 32px */
     color: #3A1409;
-    font-size: 0.75rem;
+    font-size: 0.75rem; /* 0.75rem is 12px */
     align-items: center;
+    bottom: 0;
 }
 
 .social-list {
     list-style-type: none;
-  }
+}
 
-  .social-list-container {
+.social-list-container {
     display: flex;
-   margin: 0;
+    margin: 0;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 0rem;
-  }
+    padding-right: 0;
+}
 
-
-  /*.social-list path {
+/*.social-list path {
     cursor: pointer;
-    
-  }*/
+}*/
 
+.social-list svg {
+    margin-right: 1.5rem; /* 1.5rem is 24px */
+}
 
-  .social-list svg {
-    margin-right: 1.5rem;
-  }
-
-  .icon {
+.icon {
     fill: #f9f98f;
-  }
+}
 
-  .email_submission {
-    margin-top: 1rem ;
+.email_submission {
+    margin-top: 1rem;
     margin-bottom: 1rem;
-    font-size: 2rem;
-    line-height: 3rem;
+    font-size: 2rem; /* 2rem is 32px */
+    line-height: 3rem; /* 3rem is 48px */
     font-weight: bold;
     text-align: center;
 }
@@ -180,64 +174,58 @@ footer {
     width: 75%;
     margin: auto;
     text-align: center;
-    margin-top: 0rem;
-    line-height: 2rem;
+    margin-top: 0;
+    line-height: 2rem; /* 2rem is 32px */
     text-align: justify;
-
 }
-
 
 .email-img-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-
 }
 
 .email-img-container img {
-    width: 35rem;
+    width: 35rem; /* 35rem is 560px */
     height: auto;
     opacity: 0.8;
 }
 
 .input-container {
-    padding-bottom: 3rem;
+    padding-bottom: 3rem; /* 3rem is 48px */
     flex: 1;
 }
 
-.input-container input{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    /*padding: 25px 25px 15px 10px;*/
-    height: 4.75rem;
-    width: 35rem;
+.input-container input {
+    margin-top: 1.25rem; /* 1.25rem is 20px */
+    margin-bottom: 1.25rem; /* 1.25rem is 20px */
+    height: 4.75rem; /* 4.75rem is 76px */
+    width: 35rem; /* 35rem is 560px */
     padding-top: 0;
     display: flex;
     align-items: center;
     font-family: helvetica;
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* 1.5rem is 24px */
 }
 
-.input{
+.input {
     padding-right: 1rem;
     padding-left: 2rem;
     background-color: #f9f98f;
-    border: 2.5px solid #3A1409;
-    border-radius: 40px;
+    border: 0.15625rem solid #3A1409; /* 2.5px is approximately 0.15625rem */
+    border-radius: 2.5rem; /* 40px is 2.5rem */
     font-family: 'helvetica';
-    font-size: 1.2rem;
-   
+    font-size: 1.2rem; /* 1.2rem is 19.2px */
 }
 
 .enter-button {
- font-size: 1.25rem;
- display: flex;
+    font-size: 1.25rem; /* 1.25rem is 20px */
+    display: flex;
     background-image: url(resources/start.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    padding: 2.5rem;
+    padding: 2.5rem; /* 2.5rem is 40px */
     align-items: center;
     text-decoration: none;
     color: #3A1409;
@@ -248,16 +236,15 @@ footer {
     margin: 1rem;
 }
 
-.input-container{
-    margin-bottom: 4rem;
+.input-container {
+    margin-bottom: 4rem; /* 4rem is 64px */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-
-.results-container{
+.results-container {
     width: 80%;
     display: flex;
     color: #3A1409;
@@ -266,17 +253,15 @@ footer {
     align-items: center;
     margin: auto;
     text-align: justify;
-    
 }
 
-.healing-style-title{
-    font-size: 1.25rem;
-
+.healing-style-title {
+    font-size: 1.25rem; /* 1.25rem is 20px */
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     html {
-        font-size: 10px; 
+        font-size: 10px;
     }
 
     .start-container {
@@ -288,28 +273,24 @@ footer {
         width: 75%;
         margin: auto;
         text-align: center;
-        margin-top: 0rem;
-        line-height: 2rem;
+        margin-top: 0;
+        line-height: 2rem; /* 2rem is 32px */
     }
 
     .start-img-container img {
-        width: 25rem;
+        width: 25rem; /* 25rem is 400px */
         height: auto;
-        margin-top: 4rem;
-       
+        margin-top: 4rem; /* 4rem is 64px */
     }
 
     .social-list svg {
-      width: 1.5rem;
-      height: 1.5rem;
+        width: 1.5rem; /* 1.5rem is 24px */
+        height: 1.5rem; /* 1.5rem is 24px */
     }
 
-
-footer {
-    flex-direction: row;
-    text-align: center;
-    padding-left: 2rem;
+    footer {
+        flex-direction: row;
+        text-align: center;
+        padding-left: 2rem; /* 2rem is 32px */
+    }
 }
-
-  }
-  

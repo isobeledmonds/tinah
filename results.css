@@ -7,6 +7,7 @@
 .email-container {
     font-family: helvetica;
     position: relative;
+    margin-top: 4rem;
 }
 
 .read-more h3{
@@ -163,3 +164,21 @@
 .break-line {
     margin-top: 4rem;
 }
+
+
+
+@media only screen and (max-width: 800px){
+  .links svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .button svg {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+}
+
+
+
+
