@@ -289,8 +289,11 @@ footer {
 
 .nav-container a {
     color: #3A1409;
+    
+}
 
+.nav-button:hover {
+    color: #3A1409;
 }
 }
-
   
