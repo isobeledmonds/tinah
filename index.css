@@ -6,6 +6,7 @@
     font-display: swap;
 }
 
+
 body {
     font-family: 'Tan Meringue';
     background-color: #e36b2b;
@@ -137,7 +138,7 @@ footer {
 
 
   .social-list svg {
-    margin-right: 2vmax;
+    margin-right: 1.5rem;
   }
 
   .icon {
@@ -249,3 +250,40 @@ footer {
     font-size: 1.25rem;
 
 }
+
+@media only screen and (max-width: 375px){
+    html {
+        font-size: 10px; 
+    }
+
+    .start-container {
+        display: flex;
+        color: #3A1409;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 75%;
+        margin: auto;
+        text-align: center;
+        margin-top: 0rem;
+        line-height: 2rem;
+    }
+
+    .start-img-container img {
+        width: 25rem;
+        height: auto;
+        margin-top: 4rem;
+       
+    }
+
+    .social-list svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+  }
+  
