@@ -92,6 +92,7 @@ header p {
     padding: 0.3125rem 0.625rem;
     border: 0.0625rem #f9f98f solid;
     border-radius: 50%;
+    color: #f9f98f;
 }
 
 .abcd p {
