@@ -146,10 +146,14 @@ function onNextButtonClick(event) {
     });
 
     progress();
-
-    document.getElementById("nextButton").setAttribute("disabled");
+    colourReset();
+   
 }
 
+
+function colourReset () {
+    document.getElementById("nextButton").setAttribute("disabled");
+}
 
 function logResults(event) {
     if (lastClicked !== null) {
