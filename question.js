@@ -151,12 +151,16 @@ function onNextButtonClick(event) {
     // reset view to top of the page
     resetView();
    
-}
+};
 
 
-function resetView () {
-    window.scrollTo(0, 0);
-}
+function resetView() {
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+};
 
 
 function colourReset () {
