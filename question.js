@@ -146,11 +146,15 @@ function onNextButtonClick(event) {
     });
 
     progress();
-    colourReset();
 
     // reset view to top of the page
     console.log("Calling resetView");
     resetView();
+
+
+    colourReset();
+
+   
    
 };
 
