@@ -155,6 +155,7 @@ function onNextButtonClick(event) {
 
 
 function resetView() {
+    console.log("Resetting view to the top");
     window.scrollTo({
         top: 0,
         left: 0,
