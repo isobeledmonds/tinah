@@ -149,6 +149,7 @@ function onNextButtonClick(event) {
     colourReset();
 
     // reset view to top of the page
+    console.log("Calling resetView");
     resetView();
    
 };
