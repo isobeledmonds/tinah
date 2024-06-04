@@ -218,7 +218,10 @@ function onNextButtonClick(event) {
 
     // Reset lastClicked for the new question
     lastClicked = null;
-}
+
+    // reset view to top of the page
+    resetView();
+};
 
 document.addEventListener("DOMContentLoaded", function() {
     // Display the initial question and options
@@ -229,7 +232,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-
+function resetView () {
+    window.scrollTo(0, 0);
+}
 
 
 

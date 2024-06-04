@@ -147,7 +147,15 @@ function onNextButtonClick(event) {
 
     progress();
     colourReset();
+
+    // reset view to top of the page
+    resetView();
    
+}
+
+
+function resetView () {
+    window.scrollTo(0, 0);
 }
 
 
