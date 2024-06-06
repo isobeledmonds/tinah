@@ -87,8 +87,9 @@ function displayResults(arr) {
 }
 
 
-
+localStorage.setItem("finalResult", JSON.stringify(displayResults(getResults)));
 console.log("Results:", displayResults(getResults));
+
 
 
 let key = displayResults(getResults);

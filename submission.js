@@ -1,42 +1,73 @@
-
-
-let input = document.querySelector(".input")
-let enterButton = document.querySelector(".enter-button")
-let emailList = [];
+let input = document.querySelector(".input");
+let enterButton = document.querySelector(".enter-button");
+let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 
-function enter(event) {
-    if (input.value.trim() === "" || (!input.value.includes("@") && !input.value.includes("."))) {
-        event.preventDefault();
-        enterButton.setAttribute("disabled", "disabled");}
-        else {
-            enterButton.removeAttribute("disabled");
+function validateEmail(email) {
+    return email.trim() !== "" && email.includes("@") && email.includes(".");
+}
+
+function enter() {
+    let email = input.value;
+    if (validateEmail(email)) {
+        enterButton.removeAttribute("disabled");
+        if (!emailList.includes(email)) {
+            emailList.push(email);
+            localStorage.setItem("emails", JSON.stringify(emailList));
         }
-        email = document.querySelector(".input").value;
-        emailList.push(email);  
-        localStorage.setItem("emails", JSON.stringify(emailList));
-};
-
-
+    } else {
+        enterButton.setAttribute("disabled", "disabled");
+    }
+}
 
 function saveResults() {
-    // Retrieve existing resultMap from localStorage, if any
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
 
-    // Iterate through emailList and update resultMap
-    for (let i = 0; i < emailList.length; i++) {
-        let email = emailList[i];
-        if (resultMap.hasOwnProperty(email)) {
-            // Email already exists, update results
-            resultMap[email] = results;
-        } else {
-            // Email doesn't exist, add new entry
-            resultMap[email] = results;
+    emailList.forEach(email => {
+        resultMap[email] = results;
+    });
+
+    localStorage.setItem("resultList", JSON.stringify(resultMap));
+    console.log(resultMap);
+}
+
+async function submitData() {
+    let email = input.value;
+    let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
+    let finalResult = JSON.parse(localStorage.getItem("finalResult")) || {};
+
+    console.log("Submitting resultsList:", resultsList);
+    console.log("Submitting finalResult:", finalResult);
+
+    if (validateEmail(email)) {
+        try {
+            const response = await fetch('http://localhost:2000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ resultsList, finalResult }), // Adjust as necessary to send the correct data
+            });
+
+            if (response.ok) {
+                window.location.href = './results.html';
+            } else {
+                alert('Error submitting data');
+            }
+        } catch (error) {
+            console.error('Error submitting data:', error);
+            alert('Error submitting data');
         }
     }
+}
 
-    // Save updated resultMap to localStorage
-    localStorage.setItem("resultList", JSON.stringify(resultMap));
+enterButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    enter();
+    saveResults();
+    submitData(); // Submit data to the server
+});
 
-    console.log(resultMap);
-};
+function restart(event) {
+    localStorage.clear()
+}
