@@ -45,3 +45,36 @@ function toggleCollapse() {
         alwaysVisible.style.marginTop = '0';
     }
 }
+
+
+
+function moveAllLocalStorageToSessionStorage() {
+  // Get the number of items in local storage
+  const localStorageLength = localStorage.length;
+
+  // Iterate over each item in local storage
+  for (let i = 0; i < localStorageLength; i++) {
+      // Get the key of the current item
+      const key = localStorage.key(0);
+
+      // Retrieve the data associated with the current key
+      const data = localStorage.getItem(key);
+
+      // Store the data in session storage
+      sessionStorage.setItem(key, data);
+
+      // Remove the data from local storage
+      localStorage.removeItem(key);
+  }
+}
+
+// Example usage: move all items when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  moveAllLocalStorageToSessionStorage();
+});
+
+window.addEventListener('beforeunload', function (e) {
+  const message = "You have unsaved changes. Are you sure you want to leave?";
+  e.returnValue = message; // For most browsers
+  return message; // For some old browsers
+});

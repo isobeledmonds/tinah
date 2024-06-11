@@ -260,7 +260,7 @@ footer {
     font-size: 1.25rem; /* 1.25rem is 20px */
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
     html {
         font-size: 10px;
     }

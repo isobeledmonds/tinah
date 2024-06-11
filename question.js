@@ -307,6 +307,19 @@ window.addEventListener('popstate', function(event) {
 });
 
 
+function decreaseIndex() {
+    currentQuestionIndex--;
+    console.log("Current Question Index:", currentQuestionIndex);
+    // Add any additional logic needed when the index is decreased
+}
+
+// Event listener for the browser back button
+window.addEventListener('popstate', function(event) {
+    decreaseIndex();
+});
+
+
+
 
 let input = document.querySelector(".input")
 let enterButton = document.querySelector(".enter-button")
@@ -346,3 +359,6 @@ function saveResults() {
 
     console.log(resultMap);
 };
+
+
+
