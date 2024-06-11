@@ -23,20 +23,40 @@ oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 const sheets = google.sheets({ version: 'v4', auth: oauth2Client });
 
+app.post('/refresh-token', async (req, res) => {
+    try {
+        const tokenResponse = await oauth2Client.refreshAccessToken();
+        const tokens = tokenResponse.credentials;
+
+        res.json({
+            accessToken: tokens.access_token,
+            refreshToken: tokens.refresh_token || REFRESH_TOKEN // Use the new refresh token if provided
+        });
+    } catch (error) {
+        console.error('Error refreshing token:', error);
+        res.status(500).send('Error refreshing token: ' + error.message);
+    }
+});
+
+
 app.post('/submit', async (req, res) => {
     console.log("Request received with body:", req.body); // Log the entire request body
 
-    const { resultsList, finalResult } = req.body;
+    const { resultsList } = req.body;
 
-    if (!resultsList || typeof resultsList !== 'object' || !finalResult || typeof finalResult !== 'object') {
-        res.status(400).send('Invalid request: resultsList or finalResult is missing or invalid');
+    if (!resultsList || typeof resultsList !== 'object') {
+        res.status(400).send('Invalid request: resultsList is missing or invalid');
         return;
     }
 
     const spreadsheetId = process.env.SPREADSHEET_ID;
     const range = 'Results!A2:Z100'; // Adjust range as necessary
 
-    const values = Object.entries(resultsList).map(([email, results]) => [email, results.join(', ')]);
+    const values = Object.entries(resultsList).map(([email, data]) => {
+        const results = data.results.join(', ');
+        const finalResult = data.finalResult || '';
+        return [email, results, finalResult];
+    });
 
     console.log("Appending values to spreadsheet:", values);
 
@@ -65,3 +85,5 @@ const PORT = process.env.PORT || 4000; // Default to 4000 if not specified
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+
