@@ -9,7 +9,8 @@ function validateEmail(email) {
 
 function enter() {
     let email = input.value;
-    if (validateEmail(email)) {
+    let isValid = validateEmail(email);
+    if (isValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
@@ -41,12 +42,12 @@ async function submitData() {
 
     if (validateEmail(email)) {
         try {
-            const response = await fetch('http://localhost:2000/submit', {
+            const response = await fetch('http://localhost:4000/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList, finalResult }), // Adjust as necessary to send the correct data
+                body: JSON.stringify({ resultsList, finalResult }), // Include finalResult if necessary
             });
 
             if (response.ok) {
@@ -69,5 +70,5 @@ enterButton.addEventListener('click', function(event) {
 });
 
 function restart(event) {
-    localStorage.clear()
+    localStorage.clear();
 }

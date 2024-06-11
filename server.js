@@ -28,21 +28,15 @@ app.post('/submit', async (req, res) => {
 
     const { resultsList, finalResult } = req.body;
 
-    console.log("Received resultsList:", resultsList);
-    console.log("Received finalResult:", finalResult);
-
     if (!resultsList || typeof resultsList !== 'object' || !finalResult || typeof finalResult !== 'object') {
         res.status(400).send('Invalid request: resultsList or finalResult is missing or invalid');
         return;
     }
 
     const spreadsheetId = process.env.SPREADSHEET_ID;
-    const range = 'Results!A2:C100'; // Adjust range as necessary
+    const range = 'Results!A2:Z100'; // Adjust range as necessary
 
     const values = Object.entries(resultsList).map(([email, results]) => [email, results.join(', ')]);
-    if (Object.keys(finalResult).length > 0) {
-        values.push(['Final Result', JSON.stringify(finalResult)]);
-    }
 
     console.log("Appending values to spreadsheet:", values);
 
@@ -60,11 +54,14 @@ app.post('/submit', async (req, res) => {
         res.status(200).send('Data submitted successfully');
     } catch (error) {
         console.error('Error submitting data:', error);
+        if (error.response && error.response.data) {
+            console.error('Error details:', error.response.data);
+        }
         res.status(500).send('Error submitting data: ' + error.message);
     }
 });
 
-const PORT = process.env.PORT || 2000;
+const PORT = process.env.PORT || 4000; // Default to 4000 if not specified
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

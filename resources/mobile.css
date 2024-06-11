@@ -1,0 +1,40 @@
+@media only screen and (max-width: 375px){
+    html {
+        font-size: 10px; 
+    }
+
+    .start-container {
+        width: 75%;
+        
+    }
+
+    .start-img-container img {
+        width: 20rem;
+        height: auto;
+        margin-top: 2rem;
+       
+    }
+
+  }
+  
+
+
+
+
+  .logo {
+    height: 7rem;
+}
+
+
+
+header p {
+    font-size: 0.7rem;
+    word-break: break-word;
+    text-align: right;
+}
+
+
+header {
+    padding: 0 1.8rem;
+
+}
