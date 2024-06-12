@@ -85,5 +85,3 @@ const PORT = process.env.PORT || 4000; // Default to 4000 if not specified
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
