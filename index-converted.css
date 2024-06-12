@@ -193,7 +193,7 @@ footer {
 }
 
 .input-container {
-    padding-bottom: 3rem; /* 3rem is 48px */
+    padding-bottom: 1rem; /* 3rem is 48px */
     flex: 1;
 }
 
@@ -238,11 +238,24 @@ footer {
 }
 
 .input-container {
-    margin-bottom: 4rem; /* 4rem is 64px */
+    /* 4rem is 64px */
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.gdpr {
+    padding-bottom: 2rem;
+    margin-bottom: 4rem;
+}
+
+.gdpr p {
+    font-size: 0.65rem;
+    line-height: normal;
+    text-align: center;
+    font-family: helvetica;
+    font-style: italic;
 }
 
 .results-container {
