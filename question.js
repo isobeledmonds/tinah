@@ -361,10 +361,8 @@ function saveResults() {
 };
 
 
-let getResults = JSON.parse(localStorage.getItem("results"));
-console.log(getResults)
 
-
+// Function to find the candidate with the majority vote
 function displayResults(arr) { 
     let candidate = null; 
     let count = 0; 
@@ -377,7 +375,22 @@ function displayResults(arr) {
     return candidate; 
 }
 
+// Retrieve and parse the 'results' item from localStorage
+let getResults = JSON.parse(localStorage.getItem("results"));
+console.log("Retrieved results from localStorage:", getResults);
 
-localStorage.setItem("finalResult", JSON.stringify(displayResults(getResults)));
-console.log("Results:", displayResults(getResults));
+// Check if getResults is valid
+if (!Array.isArray(getResults)) {
+    console.error("Invalid results in localStorage");
+} else {
+    // Determine the final result
+    let finalResult = displayResults(getResults);
+    console.log("Calculated final result:", finalResult);
 
+    // Store the final result in localStorage
+    localStorage.setItem("finalResult", JSON.stringify(finalResult));
+
+    // Verify if the final result is stored correctly
+    let storedFinalResult = localStorage.getItem("finalResult");
+    console.log("Stored final result in localStorage:", storedFinalResult);
+}

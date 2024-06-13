@@ -38,7 +38,6 @@ app.post('/refresh-token', async (req, res) => {
     }
 });
 
-
 app.post('/submit', async (req, res) => {
     console.log("Request received with body:", req.body); // Log the entire request body
 
@@ -49,16 +48,16 @@ app.post('/submit', async (req, res) => {
         return;
     }
 
-    const spreadsheetId = process.env.SPREADSHEET_ID;
-    const range = 'Results!A2:Z100'; // Adjust range as necessary
-
     const values = Object.entries(resultsList).map(([email, data]) => {
         const results = data.results.join(', ');
         const finalResult = data.finalResult || '';
         return [email, results, finalResult];
     });
 
-    console.log("Appending values to spreadsheet:", values);
+    console.log("Values to be appended to spreadsheet:", values); // Log the values array
+
+    const spreadsheetId = process.env.SPREADSHEET_ID;
+    const range = 'Results!A2:Z100'; // Adjust range as necessary
 
     const resource = {
         values,

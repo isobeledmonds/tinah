@@ -78,3 +78,15 @@ window.addEventListener('beforeunload', function (e) {
   e.returnValue = message; // For most browsers
   return message; // For some old browsers
 });
+
+
+window.onload = function() {
+  // Retrieve and parse the 'results' item from localStorage
+  let getResults = JSON.parse(localStorage.getItem("results")) || [];
+
+  // Check if 'results' is an empty array
+  if (getResults.length === 0) {
+      // Redirect to 'index.html' if 'results' is empty
+      window.location.href = "index.html";
+  }
+};
