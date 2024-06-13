@@ -167,5 +167,5 @@ function restart(event) {
 
 
  // Verify if the final result is stored correctly
- let storedFinalResult = JSON.parse(localStorage.getItem("finalResult"));
+ let storedFinalResult = localStorage.getItem("finalResult");
  console.log("Stored final result in localStorage:", storedFinalResult);
