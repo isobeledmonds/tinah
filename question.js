@@ -163,13 +163,19 @@ function onNextButtonClick(event) {
 
 function resetView() {
     console.log("Resetting view to the top");
-    window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-    });
-};
-
+    setTimeout(() => {
+        if (window.scrollTo) {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
+        }
+    }, 50); // Delay of 100ms to ensure smooth scrolling
+}
 
 function colourReset () {
     document.getElementById("nextButton").setAttribute("disabled");
