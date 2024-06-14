@@ -68,13 +68,10 @@ function moveAllLocalStorageToSessionStorage() {
   }
 }
 
-// Example usage: move all items when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  moveAllLocalStorageToSessionStorage();
-});
+
 
 window.addEventListener('beforeunload', function (e) {
-  const message = "You have unsaved changes. Are you sure you want to leave?";
+  const message = "Your results will be lost. Are you sure you want to leave?";
   e.returnValue = message; // For most browsers
   return message; // For some old browsers
 });
@@ -84,9 +81,23 @@ window.onload = function() {
   // Retrieve and parse the 'results' item from localStorage
   let getResults = JSON.parse(localStorage.getItem("results")) || [];
 
+  console.log('Results from localStorage:', getResults);
+
   // Check if 'results' is an empty array
   if (getResults.length === 0) {
       // Redirect to 'index.html' if 'results' is empty
       window.location.href = "index.html";
+  } else {
+      // Move items only after ensuring results are not empty
+      moveAllLocalStorageToSessionStorage();
   }
 };
+
+function moveAllLocalStorageToSessionStorage() {
+  for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = localStorage.getItem(key);
+    sessionStorage.setItem(key, value);
+  }
+  localStorage.clear();
+}

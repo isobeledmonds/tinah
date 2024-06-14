@@ -165,7 +165,41 @@ function restart(event) {
 //});
 
 
+// Function to find the candidate with the majority vote
+function displayResults(arr) { 
+    let candidate = null; 
+    let count = 0; 
+    for (let num of arr) { 
+        if (count === 0) { 
+            candidate = num; 
+        } 
+        count += (num === candidate) ? 1 : -1; 
+    } 
+    return candidate; 
+}
+
+// Retrieve and parse the 'results' item from localStorage
+let getResults = JSON.parse(localStorage.getItem("results"));
+console.log("Retrieved results from localStorage:", getResults);
+
+// Check if getResults is valid
+if (!Array.isArray(getResults)) {
+    console.error("Invalid results in localStorage");
+} else {
+    // Determine the final result
+    let finalResult = displayResults(getResults);
+    console.log("Calculated final result:", finalResult);
+
+    // Store the final result in localStorage
+    localStorage.setItem("finalResult", JSON.stringify(finalResult));
+
+    // Verify if the final result is stored correctly
+    let storedFinalResult = localStorage.getItem("finalResult");
+    console.log("Stored final result in localStorage:", storedFinalResult);
+}
 
  // Verify if the final result is stored correctly
  let storedFinalResult = localStorage.getItem("finalResult");
  console.log("Stored final result in localStorage:", storedFinalResult);
+
+
