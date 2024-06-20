@@ -68,7 +68,7 @@ async function refreshToken() {
         console.error('Error refreshing token from localhost, trying Netlify:', error);
 
         try {
-            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/refresh-token', {
+            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/REFRESH_TOKEN', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
