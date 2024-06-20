@@ -65,11 +65,41 @@ async function refreshToken() {
             throw new Error('Token refresh failed');
         }
     } catch (error) {
-        console.error('Error refreshing token:', error);
-        alert('Error refreshing token');
-        throw error;
+        console.error('Error refreshing token from localhost, trying Netlify:', error);
+
+        try {
+            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/refresh-token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Update tokens in localStorage or your preferred storage
+                localStorage.setItem('accessToken', data.accessToken);
+                localStorage.setItem('refreshToken', data.refreshToken);
+                return data.accessToken;
+            } else {
+                const errorText = await response.text();
+                console.error('Error refreshing token from Netlify:', errorText);
+                alert('Error refreshing token: ' + errorText);
+                throw new Error('Token refresh failed from Netlify');
+            }
+        } catch (netlifyError) {
+            console.error('Error refreshing token from Netlify:', netlifyError);
+            alert('Error refreshing token');
+            throw netlifyError;
+        }
     }
 }
+
+// Usage example
+refreshToken()
+    .then(accessToken => console.log('Access token:', accessToken))
+    .catch(error => console.error('Refresh token failed:', error));
+
 
 async function submitData() {
     let email = input.value;
@@ -154,15 +184,6 @@ function restart(event) {
 }
 
 
-//function decreaseIndex() {
- //   currentQuestionIndex--;
- //   console.log("Current Question Index:", currentQuestionIndex);
-//}
-
-// Event listener for the browser back button
-//window.addEventListener('popstate', function(event) {
-//    decreaseIndex();
-//});
 
 
 // Function to find the candidate with the majority vote
