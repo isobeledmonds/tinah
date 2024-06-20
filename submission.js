@@ -61,14 +61,14 @@ async function refreshToken() {
         } else {
             const errorText = await response.text();
             console.error('Error refreshing token:', errorText);
-            alert('Error refreshing token: ' + errorText);
+           // alert('Error refreshing token: ' + errorText);
             throw new Error('Token refresh failed');
         }
     } catch (error) {
         console.error('Error refreshing token from localhost, trying Netlify:', error);
 
         try {
-            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/REFRESH_TOKEN', {
+            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/refresh-token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
