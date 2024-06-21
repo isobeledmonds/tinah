@@ -17,6 +17,14 @@ const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
+// Validate the REDIRECT_URI
+try {
+  new URL(REDIRECT_URI);
+} catch (error) {
+  console.error('Invalid REDIRECT_URI:', REDIRECT_URI);
+  throw error;
+}
+
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
