@@ -60,7 +60,7 @@ const oauth2Client = new google.auth.OAuth2(
     }
   });
   
-  const PORT = process.env.PORT || 5001; // Changed port number to 5001
+  const PORT = process.env.PORT || 5002; // Changed port number to 5001
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     console.log(`Visit http://localhost:${PORT}/auth to start the authentication process.`);

@@ -178,4 +178,8 @@ if (!Array.isArray(getResults)) {
  let storedFinalResult = localStorage.getItem("finalResult");
  console.log("Stored final result in localStorage:", storedFinalResult);
 
-
+ console.log('CLIENT_ID:', process.env.CLIENT_ID);
+ console.log('CLIENT_SECRET:', process.env.CLIENT_SECRET);
+ console.log('REDIRECT_URI:', process.env.REDIRECT_URI);
+ console.log('REFRESH_TOKEN:', process.env.REFRESH_TOKEN);
+ 
