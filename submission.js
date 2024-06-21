@@ -3,7 +3,7 @@ let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
-const API_BASE_URL = 'https://tinah-quiz.netlify.app/.netlify/functions' || 'http://localhost:4000';
+const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:4000' : 'https://tinah-quiz.netlify.app/.netlify/functions';
 
 function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
@@ -96,23 +96,6 @@ async function makeAuthenticatedRequest(url, options = {}) {
     return response;
 }
 
-// Example usage of making an authenticated request
-async function fetchData() {
-    try {
-        const response = await makeAuthenticatedRequest(`${API_BASE_URL}/data`);
-        if (response.ok) {
-            const data = await response.json();
-            console.log('Data:', data);
-        } else {
-            console.error('Error fetching data:', response.statusText);
-        }
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
-
-// Call fetchData or any other function that requires authentication when needed
-fetchData();
 
 async function submitData() {
     let email = input.value;
