@@ -1,12 +1,21 @@
 require('dotenv').config();
-const { google } = require('googleapis');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const app = express();
+const { google } = require('googleapis');
 
+const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+// Configure CORS
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://tinah-quiz.netlify.app'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
