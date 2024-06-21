@@ -3,6 +3,7 @@ let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
+const API_BASE_URL = 'https://tinah-quiz-site.netlify.app/.netlify/functions' || 'http://localhost:4000';
 
 function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
@@ -45,7 +46,7 @@ function saveResults() {
 
 async function refreshToken() {
     try {
-        const response = await fetch('http://localhost:4000/refresh-token', {
+        const response = await fetch(`${API_BASE_URL}/refresh-token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,111 +55,83 @@ async function refreshToken() {
 
         if (response.ok) {
             const data = await response.json();
-            // Update tokens in localStorage or your preferred storage
+            // Store the new tokens in localStorage
             localStorage.setItem('accessToken', data.accessToken);
             localStorage.setItem('refreshToken', data.refreshToken);
             return data.accessToken;
         } else {
             const errorText = await response.text();
             console.error('Error refreshing token:', errorText);
-           // alert('Error refreshing token: ' + errorText);
             throw new Error('Token refresh failed');
         }
     } catch (error) {
-        console.error('Error refreshing token from localhost, trying Netlify:', error);
-
-        try {
-            const response = await fetch('https://tinah-quiz.netlify.app/.netlify/functions/refresh-token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                // Update tokens in localStorage or your preferred storage
-                localStorage.setItem('accessToken', data.accessToken);
-                localStorage.setItem('refreshToken', data.refreshToken);
-                return data.accessToken;
-            } else {
-                const errorText = await response.text();
-                console.error('Error refreshing token from Netlify:', errorText);
-                alert('Error refreshing token: ' + errorText);
-                throw new Error('Token refresh failed from Netlify');
-            }
-        } catch (netlifyError) {
-            console.error('Error refreshing token from Netlify:', netlifyError);
-            alert('Error refreshing token');
-            throw netlifyError;
-        }
+        console.error('Error refreshing token:', error);
+        throw error;
     }
 }
 
-// Usage example
-refreshToken()
-    .then(accessToken => console.log('Access token:', accessToken))
-    .catch(error => console.error('Refresh token failed:', error));
+async function makeAuthenticatedRequest(url, options = {}) {
+    let accessToken = localStorage.getItem('accessToken');
 
+    // If no access token, try refreshing it
+    if (!accessToken) {
+        accessToken = await refreshToken();
+    }
+
+    // Add the access token to the request headers
+    options.headers = {
+        ...options.headers,
+        'Authorization': `Bearer ${accessToken}`,
+    };
+
+    let response = await fetch(url, options);
+
+    // If the response indicates the token is expired, try refreshing the token
+    if (response.status === 401) {
+        accessToken = await refreshToken();
+        options.headers['Authorization'] = `Bearer ${accessToken}`;
+        response = await fetch(url, options);
+    }
+
+    return response;
+}
+
+// Example usage of making an authenticated request
+async function fetchData() {
+    try {
+        const response = await makeAuthenticatedRequest(`${API_BASE_URL}/data`);
+        if (response.ok) {
+            const data = await response.json();
+            console.log('Data:', data);
+        } else {
+            console.error('Error fetching data:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Call fetchData or any other function that requires authentication when needed
+fetchData();
 
 async function submitData() {
     let email = input.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
-    let finalResult = JSON.parse(localStorage.getItem("finalResult"));
-    console.log(finalResult);
-   
 
-    if (resultsList.hasOwnProperty(email)) {
-        resultsList[email].finalResult = finalResult;
-    } else {
-        // Optionally handle the case where the email is not found in resultsList
-        console.error("Email not found in resultsList");
-    }
-    
-    // Save the updated resultsList back to localStorage
-    localStorage.setItem("resultList", JSON.stringify(resultsList));
-
-    // Check structure in the console
-    console.log("resultsList to be submitted:", JSON.stringify(resultsList, null, 2));
+    console.log("Submitting resultsList:", JSON.stringify(resultsList));
 
     if (validateEmail(email)) {
         try {
-            let accessToken = localStorage.getItem('accessToken');
-
-            // Check if the access token is expired and refresh if necessary
-            if (!accessToken) {
-                accessToken = await refreshToken();
-            }
-
-            const response = await fetch('http://localhost:4000/submit', {
+            const response = await makeAuthenticatedRequest(`${API_BASE_URL}/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
                 },
                 body: JSON.stringify({ resultsList }), // Include finalResult if necessary
             });
 
             if (response.ok) {
                 window.location.href = './results.html';
-            } else if (response.status === 401) { // Unauthorized, try refreshing token
-                accessToken = await refreshToken();
-                const retryResponse = await fetch('http://localhost:4000/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${accessToken}`
-                    },
-                    body: JSON.stringify({ resultsList }), // Include finalResult if necessary
-                });
-
-                if (retryResponse.ok) {
-                    window.location.href = './results.html';
-                } else {
-                    const errorText = await retryResponse.text();
-                    console.error('Error submitting data after refresh:', errorText);
-                    alert('Error submitting data after refresh: ' + errorText);
-                }
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
@@ -170,7 +143,6 @@ async function submitData() {
         }
     }
 }
-
 
 enterButton.addEventListener('click', function(event) {
     event.preventDefault();
