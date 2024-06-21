@@ -6,6 +6,12 @@ import dotenv from 'dotenv';
 // Load environment variables from .env file
 dotenv.config();
 
+// Log environment variables to verify they are loaded correctly
+console.log('CLIENT_ID:', process.env.CLIENT_ID);
+console.log('CLIENT_SECRET:', process.env.CLIENT_SECRET);
+console.log('REDIRECT_URI:', process.env.REDIRECT_URI);
+console.log('REFRESH_TOKEN:', process.env.REFRESH_TOKEN);
+
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -20,12 +26,17 @@ const oauth2Client = new google.auth.OAuth2(
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 export async function handler(event, context) {
+  console.log('Received event:', event);
+  console.log('OAuth2 client credentials:', oauth2Client.credentials);
+
   try {
     const { token } = await oauth2Client.getAccessToken();
 
     if (!token) {
       throw new Error('Failed to obtain access token');
     }
+
+    console.log('Obtained new access token:', token);
 
     return {
       statusCode: 200,
