@@ -17,9 +17,15 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Log environment variables to verify they are loaded correctly
+console.log('CLIENT_ID:', process.env.CLIENT_ID);
+console.log('CLIENT_SECRET:', process.env.CLIENT_SECRET);
+console.log('REDIRECT_URI:', process.env.REDIRECT_URI);
+console.log('REFRESH_TOKEN:', process.env.REFRESH_TOKEN);
+
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = 'http://localhost:4000'; // Change if different
+const REDIRECT_URI = process.env.REDIRECT_URI; // Change if different
 const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 const oauth2Client = new google.auth.OAuth2(
