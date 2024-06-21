@@ -3,7 +3,7 @@ let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
-const API_BASE_URL = 'https://tinah-quiz.netlify.app/.netlify/functions' || 'http://localhost:4000';
+const API_BASE_URL = 'https://tinah-quiz-site.netlify.app/.netlify/functions' || 'http://localhost:4000';
 
 function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
