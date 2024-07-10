@@ -195,6 +195,7 @@ footer {
 .input-container {
     padding-bottom: 1rem; /* 3rem is 48px */
     flex: 1;
+    text-align: center;
 }
 
 .input-container input {
@@ -217,6 +218,43 @@ footer {
     border-radius: 2.5rem; /* 40px is 2.5rem */
     font-family: 'helvetica';
     font-size: 1.2rem; /* 1.2rem is 19.2px */
+}
+
+
+.name-input {
+    display: flex;
+}
+
+.first, .last {
+    flex: 1;
+    padding-right: 1rem;
+    padding-left: 2rem;
+    background-color: #f9f98f;
+    border: 0.15625rem solid #3A1409; /* 2.5px is approximately 0.15625rem */
+    border-radius: 2.5rem; /* 40px is 2.5rem */
+    font-family: 'helvetica';
+    font-size: 1.2rem; /* 1.2rem is 19.2px */
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+}
+
+.name-input .first {
+    margin-right: 1rem; /* Optional: adds spacing between the two inputs */
+}
+
+.first-div p{
+margin-left: -1rem;
+}
+
+.name-input input {
+    margin-top: 1.25rem; /* 1.25rem is 20px */
+    margin-bottom: 1.25rem; /* 1.25rem is 20px */
+    height: 3.75rem; /* 4.75rem is 76px */
+    width: 17rem; /* 35rem is 560px */
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    font-family: helvetica;
+    font-size: 1.5rem; /* 1.5rem is 24px */
 }
 
 .enter-button {
