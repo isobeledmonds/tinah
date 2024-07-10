@@ -75,7 +75,12 @@ async function makeAuthenticatedRequest(url, options = {}) {
 
     // If no access token, try refreshing it
     if (!accessToken) {
-        accessToken = await refreshToken();
+        try {
+            accessToken = await refreshToken();
+        } catch (error) {
+            console.error('Unable to refresh token:', error);
+            return;
+        }
     }
 
     // Add the access token to the request headers
@@ -88,14 +93,18 @@ async function makeAuthenticatedRequest(url, options = {}) {
 
     // If the response indicates the token is expired, try refreshing the token
     if (response.status === 401) {
-        accessToken = await refreshToken();
-        options.headers['Authorization'] = `Bearer ${accessToken}`;
-        response = await fetch(url, options);
+        try {
+            accessToken = await refreshToken();
+            options.headers['Authorization'] = `Bearer ${accessToken}`;
+            response = await fetch(url, options);
+        } catch (error) {
+            console.error('Unable to refresh token:', error);
+            return;
+        }
     }
 
     return response;
 }
-
 
 async function submitData() {
     let email = input.value;
@@ -138,9 +147,6 @@ function restart(event) {
     localStorage.clear();
 }
 
-
-
-
 // Function to find the candidate with the majority vote
 function displayResults(arr) { 
     let candidate = null; 
@@ -174,8 +180,6 @@ if (!Array.isArray(getResults)) {
     console.log("Stored final result in localStorage:", storedFinalResult);
 }
 
- // Verify if the final result is stored correctly
- let storedFinalResult = localStorage.getItem("finalResult");
- console.log("Stored final result in localStorage:", storedFinalResult);
-
- 
+// Verify if the final result is stored correctly
+let storedFinalResult = localStorage.getItem("finalResult");
+console.log("Stored final result in localStorage:", storedFinalResult);
