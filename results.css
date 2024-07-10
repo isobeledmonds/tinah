@@ -19,7 +19,7 @@
 }
 
 .email-container p {
-  padding-top: 1.5rem;
+  padding-top: 0.75rem;
   font-size: 1.25rem;
 }
 
@@ -76,6 +76,7 @@
     padding-top: 2rem;
   }
   
+
 
 .button:hover{
     animation: bounceDown 0.5s ease;
@@ -166,9 +167,51 @@
     margin-top: 4rem;
 }
 
+.read-more .heading {
+  font-weight: bold;
+  padding-bottom: 0;
+}
+
+.read-more .content-rm {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.find-out-more a {
+  color: #26428b;
+}
+
+.read-more a {
+  color: #26428b;
+}
 
 
-@media only screen and (max-width: 800px){
+/*.find-out-more ul {
+  list-style-position: inside;
+}*/
+
+.find-out-more::marker {
+  margin-right: 0.8rem;
+}
+
+.find-out-more .heading {
+  font-weight: bold;
+  padding-bottom: 0;
+}
+
+
+.find-out-more .post-ul{
+  padding-top: 0;
+}
+
+.find-out-more .indent {
+  display: block;
+  padding-left: 3.5rem;
+  font-weight: normal;
+}
+
+
+@media only screen and (max-width: 900px){
   .links svg {
     width: 1.8rem;
     height: 1.8rem;
