@@ -17,9 +17,11 @@ console.log('REFRESH_TOKEN:', REFRESH_TOKEN);
 
 // Validate the REDIRECT_URI
 try {
-  new URL(REDIRECT_URI);
+  const redirectUrl = new URL(REDIRECT_URI);
+  console.log('Valid REDIRECT_URI:', redirectUrl.toString());
 } catch (error) {
   console.error('Invalid REDIRECT_URI:', REDIRECT_URI);
+  console.error('URL validation error:', error);
   throw error;
 }
 
@@ -53,7 +55,7 @@ export async function handler(event, context) {
     };
   } catch (error) {
     console.error('Error refreshing token:', error);
-    
+
     // Specific error handling for invalid refresh token
     if (error.message.includes('invalid_grant')) {
       console.error('The refresh token is invalid or expired.');
