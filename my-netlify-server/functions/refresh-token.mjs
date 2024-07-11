@@ -53,6 +53,12 @@ export async function handler(event, context) {
     };
   } catch (error) {
     console.error('Error refreshing token:', error);
+    
+    // Specific error handling for invalid refresh token
+    if (error.message.includes('invalid_grant')) {
+      console.error('The refresh token is invalid or expired.');
+    }
+
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Error refreshing token: ' + error.message }),
