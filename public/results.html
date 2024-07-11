@@ -3,41 +3,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TINAH</title>
-    <link rel="stylesheet" href="./index-converted.css">
-    <link rel="icon" type="img" href="./resources/TINAH Mascot-raw.png">
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script defer src="index.js"></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/results.css">
+    <script defer src="results.js"></script>
+    <script defer src="results_array.js"></script>
+    <script defer src="https://apis.google.com/js/api.js"></script>
 
+    
+    <link rel="icon" type="img" href="./resources/TINAH Mascot-raw.png">
 </head>
 <body>
     <header>
-        <img class="logo" src="./resources/tinah_logo.png">
+        <a href="./index.html" ><img class="logo" src="./resources/tinah_logo.png" onclick="restart(event)"></a>
         
     </header>
-    <div class="content">
-    <div class="start-container">
-        <div class="start-img-container">
-            <img src="./resources/0.png">
-        </div> 
-        <p class="quiz-title">
-            Find out what your mental wellness healing style is
-        </p>
 
-        <div class="nav-container">
-            <div class="nav-button">
-                <a id="startButton" href="./questions.html">
-                    <p>Start
-                        <i class="bi bi-arrow-right-circle">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-                            </svg>
-                        </i>
-                    </p>
-                </a>
-            </div>
+    <div class="email-container">
+        <div class="email-img-container">
+            <img>
+        </div>
+        <h2 class="email_submission">Your wellness healing style is</h2>
+        <h3 class="healing-style-title"></h3>
+        <p class="healing-style-content"></p>
+        <h3 class="button" onclick="toggleCollapse()">Read more
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
+            <path d="M12 13.172l-4.95-4.95-1.414 1.414L12 16l6.364-6.364-1.414-1.414z"/>
+            <path d="M12 19.172l-4.95-4.95-1.414 1.414L12 22l6.364-6.364-1.414-1.414z"/>
+          </svg>
+        </h3>
+        <div id="content" class="read-more hidden">
+        </div>
+          <h3 id="fom" class="button fom hidden" onclick="toggleCollapse1()">Find out more
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
+              <path d="M12 13.172l-4.95-4.95-1.414 1.414L12 16l6.364-6.364-1.414-1.414z"/>
+              <path d="M12 19.172l-4.95-4.95-1.414 1.414L12 22l6.364-6.364-1.414-1.414z"/>
+            </svg>
+          </h3>
+          <div id="content1" class="find-out-more hidden1">
+          </div>
+        <div class="break-line">
+          <svg width="100%" height="20px" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 10 Q 50 0, 100 10 T 200 10" stroke="#333" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="always-visible">
+            <div class="always-visible-text"></div>
+          <div class="links">
+
+          </div>
+          <p>
+            Make sure you subscribe so you don’t miss the weekly new episode & if you want even more free advice head over to our Instagram & TikTok.<br>
+            I hope this has helped inspire you to begin your mental wellbeing journey, feel free to drop us a DM at any time to let us know how you get on!
+          </p>
         </div>
     </div>
-</div>
+  
+      
+
 
         <footer>
 

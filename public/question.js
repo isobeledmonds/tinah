@@ -116,6 +116,8 @@ function handleButtonClick(buttonId, currentButton) {
 }
 
 function onNextButtonClick(event) {
+
+
     if (nextButton.hasAttribute("disabled")) {
         event.preventDefault();
         return;
@@ -156,7 +158,6 @@ function onNextButtonClick(event) {
 
     colourReset();
 
-   
    
 };
 
@@ -290,9 +291,14 @@ window.addEventListener("beforeunload", function() {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+ if (currentQuestionIndex.length === 17) {
+   removeResults();
+   decreaseIndex();
+} else {
     displayQuestionAndOptions();
     updateImages();
     progress();
+}
 });
 
 
@@ -323,6 +329,8 @@ function decreaseIndex() {
 window.addEventListener('popstate', function(event) {
     decreaseIndex();
 });
+
+
 
 
 
@@ -400,3 +408,5 @@ if (!Array.isArray(getResults)) {
     let storedFinalResult = localStorage.getItem("finalResult");
     console.log("Stored final result in localStorage:", storedFinalResult);
 }
+
+

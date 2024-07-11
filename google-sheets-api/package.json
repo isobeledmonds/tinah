@@ -1,0 +1,17 @@
+{
+  "name": "google-sheets-api",
+  "version": "1.0.0",
+  "description": "Google Sheets API integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 'No build script'"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^59.0.0",
+    "dotenv": "^10.0.0"
+  }
+}
