@@ -4,10 +4,7 @@ import dotenv from 'dotenv';
 // Load environment variables from .env file
 dotenv.config();
 
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECT_URI = process.env.REDIRECT_URI;
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 
 // Log the environment variables for debugging
 console.log('CLIENT_ID:', CLIENT_ID);
@@ -17,6 +14,7 @@ console.log('REFRESH_TOKEN:', REFRESH_TOKEN);
 
 // Validate the REDIRECT_URI
 try {
+  console.log('Attempting to validate REDIRECT_URI...');
   const redirectUrl = new URL(REDIRECT_URI);
   console.log('Valid REDIRECT_URI:', redirectUrl.toString());
 } catch (error) {
