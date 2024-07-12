@@ -3,4 +3,4 @@ node_modules/
 .env
 credentials.json
 /tmp/token.json
-token.json
+/google-sheets-api/token.json
