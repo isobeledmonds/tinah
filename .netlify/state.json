@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"country": {
+				"code": "ID",
+				"name": "Indonesia"
+			},
+			"subdivision": {
+				"code": "BA",
+				"name": "Bali"
+			},
+			"timezone": "Asia/Makassar",
+			"latitude": -8.6507,
+			"longitude": 115.2124
+		},
+		"timestamp": 1720580177380
+	},
+	"siteId": "681124b5-47f8-486b-9dd3-b1e1182c0f2d"
+}
