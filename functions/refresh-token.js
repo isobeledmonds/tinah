@@ -6,14 +6,27 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const TOKEN_PATH = path.resolve(__dirname, '../google-sheets-api/token.json');
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+
+function initializeToken() {
+    const token = {
+        access_token: ACCESS_TOKEN,
+        refresh_token: REFRESH_TOKEN,
+        scope: SCOPES.join(' '),
+        token_type: 'Bearer',
+        expiry_date: Date.now() + 3600 * 1000 // 1 hour
+    };
+    fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
+    oAuth2Client.setCredentials(token);
+}
 
 if (fs.existsSync(TOKEN_PATH)) {
     const token = fs.readFileSync(TOKEN_PATH);
     oAuth2Client.setCredentials(JSON.parse(token));
 } else {
-    console.error('Token file not found at', TOKEN_PATH);
+    console.log('Token file not found, creating from environment variables.');
+    initializeToken();
 }
 
 exports.handler = async (event) => {
