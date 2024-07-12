@@ -1,7 +1,7 @@
 const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../google-sheets-api/.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const TOKEN_PATH = path.resolve(__dirname, '../google-sheets-api/token.json');
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
