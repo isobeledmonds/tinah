@@ -17,8 +17,8 @@ if (fs.existsSync(TOKEN_PATH)) {
 async function appendToSheet(resultsList) {
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     const response = await sheets.spreadsheets.values.append({
-        spreadsheetId: 'your-spreadsheet-id', // Replace with your actual spreadsheet ID
-        range: 'Sheet1!A1', // Replace with your actual range
+        spreadsheetId: '1cTt32p6kvbjhzclt7TmUEScSmrtRaCLjLhKyVFSS9w8', // Replace with your actual spreadsheet ID
+        range: 'Results!A2:Z', // Replace with your actual range
         valueInputOption: 'RAW',
         resource: {
             values: [
