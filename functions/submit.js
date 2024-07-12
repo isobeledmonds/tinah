@@ -6,16 +6,13 @@ require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 const TOKEN_PATH = '/tmp/token.json'; // Use /tmp directory for writable access
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 function initializeToken() {
-    if (!ACCESS_TOKEN || !REFRESH_TOKEN) {
-        throw new Error('Environment variables ACCESS_TOKEN or REFRESH_TOKEN are not set');
-    }
     const token = {
-        access_token: ACCESS_TOKEN,
-        refresh_token: REFRESH_TOKEN,
+        access_token: process.env.ACCESS_TOKEN,
+        refresh_token: process.env.REFRESH_TOKEN,
         scope: SCOPES.join(' '),
         token_type: 'Bearer',
         expiry_date: Date.now() + 3600 * 1000 // 1 hour
@@ -25,8 +22,13 @@ function initializeToken() {
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
-    const token = fs.readFileSync(TOKEN_PATH);
-    oAuth2Client.setCredentials(JSON.parse(token));
+    try {
+        const token = fs.readFileSync(TOKEN_PATH);
+        oAuth2Client.setCredentials(JSON.parse(token));
+    } catch (error) {
+        console.error('Error reading token file:', error.message);
+        initializeToken();
+    }
 } else {
     console.log('Token file not found, creating from environment variables.');
     initializeToken();

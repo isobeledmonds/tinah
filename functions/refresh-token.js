@@ -10,9 +10,6 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, ACCESS_TOKEN, REFRESH_TOKEN } = 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 function initializeToken() {
-    if (!ACCESS_TOKEN || !REFRESH_TOKEN) {
-        throw new Error('Environment variables ACCESS_TOKEN or REFRESH_TOKEN are not set');
-    }
     const token = {
         access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
@@ -28,7 +25,7 @@ if (fs.existsSync(TOKEN_PATH)) {
     const token = fs.readFileSync(TOKEN_PATH);
     oAuth2Client.setCredentials(JSON.parse(token));
 } else {
-    console.log('Token file not found, creating from environment variables.');
+    console.error('Token file not found at', TOKEN_PATH);
     initializeToken();
 }
 
