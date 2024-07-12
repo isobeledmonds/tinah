@@ -12,6 +12,8 @@ const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_U
 if (fs.existsSync(TOKEN_PATH)) {
     const token = fs.readFileSync(TOKEN_PATH);
     oAuth2Client.setCredentials(JSON.parse(token));
+} else {
+    console.error('Token file not found at', TOKEN_PATH);
 }
 
 exports.handler = async (event) => {
@@ -42,10 +44,12 @@ exports.handler = async (event) => {
             }),
         };
     } catch (error) {
-        console.error('Error refreshing token:', error);
+        console.error('Error refreshing token:', error.message);
+        console.error('Error details:', error);
+        console.error('Error stack:', error.stack);
         return {
             statusCode: 500,
-            body: 'Error refreshing token',
+            body: `Error refreshing token: ${error.message}`,
         };
     }
 };
