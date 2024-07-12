@@ -10,9 +10,6 @@ const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, RE
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 function initializeToken() {
-    if (!ACCESS_TOKEN || !REFRESH_TOKEN) {
-        throw new Error('Environment variables ACCESS_TOKEN or REFRESH_TOKEN are not set');
-    }
     const token = {
         access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
@@ -22,12 +19,14 @@ function initializeToken() {
     };
     fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
     oAuth2Client.setCredentials(token);
+    console.log('Initialized token from environment variables');
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
     try {
         const token = fs.readFileSync(TOKEN_PATH);
         oAuth2Client.setCredentials(JSON.parse(token));
+        console.log('Loaded token from file');
     } catch (error) {
         console.error('Error reading token file:', error.message);
         initializeToken();
@@ -40,9 +39,10 @@ if (fs.existsSync(TOKEN_PATH)) {
 async function appendToSheet(resultsList) {
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
+        console.log('Appending to Google Sheets:', resultsList);
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Results!A2:Z',
+            range: 'Sheet1!A1',
             valueInputOption: 'RAW',
             resource: {
                 values: [
@@ -50,6 +50,7 @@ async function appendToSheet(resultsList) {
                 ]
             },
         });
+        console.log('Response from Google Sheets:', response.data);
         return response.data;
     } catch (error) {
         console.error('Error appending to Google Sheets:', error.message);
@@ -73,6 +74,7 @@ exports.handler = async (event) => {
     const { resultsList } = JSON.parse(event.body);
 
     try {
+        console.log('Received data for submission:', resultsList);
         const data = await appendToSheet(resultsList);
         return {
             statusCode: 200,
