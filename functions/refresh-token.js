@@ -1,15 +1,18 @@
 const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-const TOKEN_PATH = path.resolve(__dirname, '../google-sheets-api/token.json');
+const TOKEN_PATH = '/tmp/token.json'; // Use /tmp directory for writable access
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 function initializeToken() {
+    if (!ACCESS_TOKEN || !REFRESH_TOKEN) {
+        throw new Error('Environment variables ACCESS_TOKEN or REFRESH_TOKEN are not set');
+    }
     const token = {
         access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
