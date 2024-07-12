@@ -108,7 +108,7 @@ header {
 
 .nav-button {
     display: flex;
-    background-image: url(resources/start.png);
+    background-image: url(../resources/start.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -260,7 +260,7 @@ margin-left: -1rem;
 .enter-button {
     font-size: 1.25rem; /* 1.25rem is 20px */
     display: flex;
-    background-image: url(resources/start.png);
+    background-image: url(../resources/start.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
