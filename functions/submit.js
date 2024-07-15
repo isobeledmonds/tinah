@@ -22,20 +22,18 @@ async function initializeToken() {
     }
 }
 
-async function loadToken() {
-    if (fs.existsSync(TOKEN_PATH)) {
-        try {
-            const token = fs.readFileSync(TOKEN_PATH);
-            oAuth2Client.setCredentials(JSON.parse(token));
-            console.log('Loaded token from file');
-        } catch (error) {
-            console.error('Error reading token file:', error.message);
-            await initializeToken();
-        }
-    } else {
-        console.log('Token file not found, creating from environment variables.');
-        await initializeToken();
+if (fs.existsSync(TOKEN_PATH)) {
+    try {
+        const token = fs.readFileSync(TOKEN_PATH);
+        oAuth2Client.setCredentials(JSON.parse(token));
+        console.log('Loaded token from file');
+    } catch (error) {
+        console.error('Error reading token file:', error.message);
+        initializeToken();
     }
+} else {
+    console.log('Token file not found, creating from environment variables.');
+    initializeToken();
 }
 
 oAuth2Client.on('tokens', (tokens) => {
@@ -46,13 +44,12 @@ oAuth2Client.on('tokens', (tokens) => {
 });
 
 async function appendToSheet(resultsList) {
-    await loadToken();  // Ensure the token is loaded before making the request
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
         console.log('Appending to Google Sheets:', resultsList);
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Sheet1!A1',
+            range: 'Results!A2:Z',
             valueInputOption: 'RAW',
             resource: {
                 values: [

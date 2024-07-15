@@ -1,1 +1,0 @@
-module.exports = require('./functions/refresh-token.js')
