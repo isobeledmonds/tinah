@@ -44,68 +44,6 @@ function saveResults() {
     console.log(resultMap);
 }
 
-async function refreshToken() {
-    try {
-        const response = await fetch(`${API_BASE_URL}/refresh-token`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            // Store the new tokens in localStorage
-            localStorage.setItem('accessToken', data.accessToken);
-            localStorage.setItem('refreshToken', data.refreshToken);
-            return data.accessToken;
-        } else {
-            const errorText = await response.text();
-            console.error('Error refreshing token:', errorText);
-            throw new Error('Token refresh failed');
-        }
-    } catch (error) {
-        console.error('Error refreshing token:', error);
-        throw error;
-    }
-}
-
-async function makeAuthenticatedRequest(url, options = {}) {
-    let accessToken = localStorage.getItem('accessToken');
-
-    // If no access token, try refreshing it
-    if (!accessToken) {
-        try {
-            accessToken = await refreshToken();
-        } catch (error) {
-            console.error('Unable to refresh token:', error);
-            return;
-        }
-    }
-
-    // Add the access token to the request headers
-    options.headers = {
-        ...options.headers,
-        'Authorization': `Bearer ${accessToken}`,
-    };
-
-    let response = await fetch(url, options);
-
-    // If the response indicates the token is expired, try refreshing the token
-    if (response.status === 401) {
-        try {
-            accessToken = await refreshToken();
-            options.headers['Authorization'] = `Bearer ${accessToken}`;
-            response = await fetch(url, options);
-        } catch (error) {
-            console.error('Unable to refresh token:', error);
-            return;
-        }
-    }
-
-    return response;
-}
-
 async function submitData() {
     let email = input.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
@@ -114,7 +52,7 @@ async function submitData() {
 
     if (validateEmail(email)) {
         try {
-            const response = await makeAuthenticatedRequest(`${API_BASE_URL}/submit`, {
+            const response = await fetch(`${API_BASE_URL}/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,20 +6,22 @@ require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 const TOKEN_PATH = '/tmp/token.json';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 async function initializeToken() {
     const token = {
-        access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
-        scope: SCOPES.join(' '),
-        token_type: 'Bearer',
-        expiry_date: Date.now() + 3600 * 1000 // 1 hour
     };
-    await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(token));
     oAuth2Client.setCredentials(token);
-    console.log('Initialized token from environment variables');
+    try {
+        const { token: newToken } = await oAuth2Client.getAccessToken();
+        oAuth2Client.setCredentials(newToken);
+        await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(newToken));
+        console.log('Initialized token from environment variables');
+    } catch (error) {
+        console.error('Error obtaining access token:', error.message);
+    }
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
