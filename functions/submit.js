@@ -3,13 +3,13 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-const TOKEN_PATH = '/tmp/token.json'; // Use /tmp directory for writable access
+const TOKEN_PATH = '/tmp/token.json';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
-function initializeToken() {
+async function initializeToken() {
     const token = {
         access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
@@ -17,7 +17,7 @@ function initializeToken() {
         token_type: 'Bearer',
         expiry_date: Date.now() + 3600 * 1000 // 1 hour
     };
-    fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
+    await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(token));
     oAuth2Client.setCredentials(token);
     console.log('Initialized token from environment variables');
 }
@@ -36,13 +36,20 @@ if (fs.existsSync(TOKEN_PATH)) {
     initializeToken();
 }
 
+oAuth2Client.on('tokens', (tokens) => {
+    if (tokens.refresh_token) {
+        console.log('Saving new refresh token');
+        fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens));
+    }
+});
+
 async function appendToSheet(resultsList) {
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
         console.log('Appending to Google Sheets:', resultsList);
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Sheet1!A1',
+            range: 'Results!A2:Z',
             valueInputOption: 'RAW',
             resource: {
                 values: [
