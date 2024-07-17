@@ -1,7 +1,5 @@
 let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
-let firstName = document.querySelector(".first-name");
-let lastName = document.querySelector(".last-name");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResults = JSON.parse(localStorage.getItem("finalResults")) || {}; // Store final results for each email
@@ -11,24 +9,14 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
-function validateNames(first, last) {
-    return first.trim() !== "" && last.trim() !== "";
-}
-
 function enter() {
     let email = input.value;
-    let first = firstName.value;
-    let last = lastName.value;
-    let isEmailValid = validateEmail(email);
-    let areNamesValid = validateNames(first, last);
-    
-    if (isEmailValid && areNamesValid) {
+    let isValid = validateEmail(email);
+    if (isValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
             localStorage.setItem("emails", JSON.stringify(emailList));
-            localStorage.setItem("firstname", first);
-            localStorage.setItem("lastname", last);
         }
     } else {
         enterButton.setAttribute("disabled", "disabled");
@@ -42,18 +30,12 @@ input.addEventListener("keypress", function(event) {
     }
 });
 
-firstName.addEventListener("input", enter);
-lastName.addEventListener("input", enter);
-input.addEventListener("input", enter);
-
 function calculateFinalResult(results) {
     return displayResults(results); // Using displayResults function to determine the final result
 }
 
 function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
-    let first = localStorage.getItem("firstname");
-    let last = localStorage.getItem("lastname");
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
@@ -63,9 +45,6 @@ function saveResults() {
         console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
-            firstName: first,
-            lastName: last,
-            email: email,
             results: results,
             finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
         };
@@ -95,8 +74,7 @@ async function submitData() {
             });
 
             if (response.ok) {
-                //window.location.href = './results.html', '_blank';
-                window.open = './results.html', '_blank';
+                window.location.href = './results.html';
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
