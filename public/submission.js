@@ -1,7 +1,7 @@
 let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
-let firstName = document.querySelector(".first");
-let lastName = document.querySelector(".last");
+let firstNameInput = document.querySelector(".first");
+let lastNameInput = document.querySelector(".last");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResults = JSON.parse(localStorage.getItem("finalResults")) || {}; // Store final results for each email
