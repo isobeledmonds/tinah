@@ -1,7 +1,7 @@
 const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
+require('dotenv').config();
 
 const TOKEN_PATH = '/tmp/token.json';
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
@@ -12,12 +12,16 @@ const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_U
 async function initializeToken() {
     oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
     try {
-        const { credentials } = await oAuth2Client.getAccessToken();
-        oAuth2Client.setCredentials(credentials);
-        await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(credentials));
+        const tokenResponse = await oAuth2Client.getAccessToken();
+        const tokens = tokenResponse.token;
+        if (!tokens) {
+            throw new Error('Failed to obtain access token');
+        }
+        oAuth2Client.setCredentials(tokens);
+        await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(tokens));
         console.log('Initialized token from environment variables');
-        console.log('Access Token:', credentials.access_token);
-        console.log('Refresh Token:', credentials.refresh_token);
+        console.log('Access Token:', tokens.access_token);
+        console.log('Refresh Token:', tokens.refresh_token);
     } catch (error) {
         console.error('Error obtaining access token:', error.message);
         throw error;
@@ -27,7 +31,10 @@ async function initializeToken() {
 async function loadToken() {
     if (fs.existsSync(TOKEN_PATH)) {
         try {
-            const token = fs.readFileSync(TOKEN_PATH);
+            const token = fs.readFileSync(TOKEN_PATH, 'utf8');
+            if (!token) {
+                throw new Error('Token file is empty');
+            }
             oAuth2Client.setCredentials(JSON.parse(token));
             console.log('Loaded token from file');
         } catch (error) {
@@ -52,15 +59,18 @@ async function appendToSheet(resultsList) {
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
         console.log('Appending to Google Sheets:', resultsList);
+
+        const values = Object.entries(resultsList).map(([email, data]) => {
+            const results = data.results.join(', ');
+            const finalResult = data.finalResult || '';
+            return [email, results, finalResult];
+        });
+
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Results!A2',
+            range: 'Sheet1!A2:Z100',  // Adjust range as necessary
             valueInputOption: 'RAW',
-            resource: {
-                values: [
-                    [resultsList.email, JSON.stringify(resultsList.results), resultsList.finalResult]
-                ]
-            },
+            resource: { values },
         });
         console.log('Response from Google Sheets:', response.data);
         return response.data;
@@ -84,6 +94,13 @@ exports.handler = async (event) => {
     }
 
     const { resultsList } = JSON.parse(event.body);
+
+    if (!resultsList || typeof resultsList !== 'object') {
+        return {
+            statusCode: 400,
+            body: 'Invalid request: resultsList is missing or invalid',
+        };
+    }
 
     try {
         console.log('Received data for submission:', resultsList);
