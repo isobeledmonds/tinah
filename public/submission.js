@@ -11,12 +11,16 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
+function validateNames(first, last) {
+    return first.trim() !== "" && last.trim() !== "";
+}
+
 function enter() {
     let email = input.value;
     let first = firstNameInput.value;
     let last = lastNameInput.value;
     let isValid = validateEmail(email);
-    if (isValid) {
+    if (isEmailValid && areNamesValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
@@ -42,6 +46,8 @@ function calculateFinalResult(results) {
 
 function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
+    let first = JSON.parse(localStorage.getItem("firstname"));
+    let last = JSON.parse(localStorage.getItem("lastname"));
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
@@ -51,6 +57,9 @@ function saveResults() {
         console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
+            firstName: first,
+            lastName: last,
+            email: email,
             results: results,
             finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
         };
