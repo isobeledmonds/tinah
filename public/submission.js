@@ -1,5 +1,7 @@
 let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
+let firstName = document.querySelector(".first-name");
+let lastName = document.querySelector(".last-name");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResults = JSON.parse(localStorage.getItem("finalResults")) || {}; // Store final results for each email
@@ -9,10 +11,18 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
+function validateNames(first, last) {
+    return first.trim() !== "" && last.trim() !== "";
+}
+
 function enter() {
     let email = input.value;
-    let isValid = validateEmail(email);
-    if (isValid) {
+    let first = firstName.value;
+    let last = lastName.value;
+    let isEmailValid = validateEmail(email);
+    let areNamesValid = validateNames(first, last);
+    
+    if (isEmailValid && areNamesValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
@@ -29,6 +39,10 @@ input.addEventListener("keypress", function(event) {
         enterButton.click();
     }
 });
+
+firstName.addEventListener("input", enter);
+lastName.addEventListener("input", enter);
+input.addEventListener("input", enter);
 
 function calculateFinalResult(results) {
     return displayResults(results); // Using displayResults function to determine the final result
@@ -59,18 +73,20 @@ function saveResults() {
 
 async function submitData() {
     let email = input.value;
+    let first = firstName.value;
+    let last = lastName.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
 
-    if (validateEmail(email)) {
+    if (validateEmail(email) && validateNames(first, last)) {
         try {
             const response = await fetch(`${API_BASE_URL}/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList }), // Send resultsList to the server
+                body: JSON.stringify({ resultsList, firstName: first, lastName: last }), // Include first and last name
             });
 
             if (response.ok) {
