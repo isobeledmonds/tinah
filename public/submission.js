@@ -34,23 +34,26 @@ function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
 
     emailList.forEach(email => {
+        console.log('Processing email:', email);
+        console.log('Current finalResult:', finalResult[email]);
+
         resultMap[email] = {
             results: results,
             finalResult: finalResult[email] || '' // Ensure finalResult is set for each email
         };
+
+        console.log('Updated resultMap entry:', resultMap[email]);
     });
 
     localStorage.setItem("resultList", JSON.stringify(resultMap));
-    console.log(resultMap);
+    console.log('Final resultMap:', resultMap);
 }
 
 async function submitData() {
     let email = input.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
-    let ListfinalResult = JSON.parse(localStorage.getItem("finalResult")) || {};
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
-    console.log("Submitting ListfinalResult:", JSON.stringify(ListfinalResult));
 
     if (validateEmail(email)) {
         try {
@@ -59,7 +62,7 @@ async function submitData() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList, ListfinalResult }), // Include finalResult if necessary
+                body: JSON.stringify({ resultsList }), // Include finalResult if necessary
             });
 
             if (response.ok) {
