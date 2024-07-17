@@ -27,6 +27,8 @@ function enter() {
         if (!emailList.includes(email)) {
             emailList.push(email);
             localStorage.setItem("emails", JSON.stringify(emailList));
+            localStorage.setItem("firstname", first);
+            localStorage.setItem("lastname", last);
         }
     } else {
         enterButton.setAttribute("disabled", "disabled");
@@ -50,6 +52,8 @@ function calculateFinalResult(results) {
 
 function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
+    let first = localStorage.getItem("firstname");
+    let last = localStorage.getItem("lastname");
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
@@ -59,6 +63,9 @@ function saveResults() {
         console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
+            firstName: first,
+            lastName: last,
+            email: email,
             results: results,
             finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
         };
@@ -73,20 +80,18 @@ function saveResults() {
 
 async function submitData() {
     let email = input.value;
-    let first = firstName.value;
-    let last = lastName.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
 
-    if (validateEmail(email) && validateNames(first, last)) {
+    if (validateEmail(email)) {
         try {
             const response = await fetch(`${API_BASE_URL}/submit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList, firstName: first, lastName: last }), // Include first and last name
+                body: JSON.stringify({ resultsList }), // Send resultsList to the server
             });
 
             if (response.ok) {
