@@ -11,18 +11,18 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
-function validateNames(first) {
+function validateFirstName(first) {
     return first.trim() !== "";
 }
 
 function enter() {
     let email = input.value;
-    let first = firstName.value;
-    let last = lastName.value;
+    let first = firstNameInput.value;
+    let last = lastNameInput.value;
     let isEmailValid = validateEmail(email);
-    let areNamesValid = validateNames(first);
+    let isFirstNameValid = validateFirstName(first);
     
-    if (isEmailValid && areNamesValid) {
+    if (isEmailValid && isFirstNameValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
@@ -34,6 +34,9 @@ function enter() {
         enterButton.setAttribute("disabled", "disabled");
     }
 }
+
+input.addEventListener("input", enter);
+firstNameInput.addEventListener("input", enter);
 
 input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
