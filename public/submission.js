@@ -1,5 +1,7 @@
 let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
+let firstName = document.querySelector(".first-name");
+let lastName = document.querySelector(".last-name");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
 let finalResults = JSON.parse(localStorage.getItem("finalResults")) || {}; // Store final results for each email
@@ -9,14 +11,24 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
+function validateNames(first, last) {
+    return first.trim() !== "" && last.trim() !== "";
+}
+
 function enter() {
     let email = input.value;
-    let isValid = validateEmail(email);
-    if (isValid) {
+    let first = firstName.value;
+    let last = lastName.value;
+    let isEmailValid = validateEmail(email);
+    let areNamesValid = validateNames(first, last);
+    
+    if (isEmailValid && areNamesValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
             localStorage.setItem("emails", JSON.stringify(emailList));
+            localStorage.setItem("firstName", first);
+            localStorage.setItem("lastName", last);
         }
     } else {
         enterButton.setAttribute("disabled", "disabled");
@@ -45,6 +57,9 @@ function saveResults() {
         console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
+            firstName: localStorage.getItem("firstName"),
+            lastName: localStorage.getItem("lastName"),
+            email: email,
             results: results,
             finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
         };
@@ -86,6 +101,7 @@ async function submitData() {
         }
     }
 }
+
 
 enterButton.addEventListener('click', function(event) {
     event.preventDefault();
