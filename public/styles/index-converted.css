@@ -130,7 +130,7 @@ footer {
     font-size: 0.75rem; /* 0.75rem is 12px */
     align-items: center;
     bottom: 0;
-    position: relative;
+    position: fixed;
 }
 
 .social-list {
