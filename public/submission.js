@@ -22,6 +22,8 @@ function enter() {
     let isEmailValid = validateEmail(email);
     let isFirstNameValid = validateFirstName(first);
     
+    console.log("Email valid:", isEmailValid, "First name valid:", isFirstNameValid); // Debugging line
+
     if (isEmailValid && isFirstNameValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
