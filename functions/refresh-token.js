@@ -1,32 +1,29 @@
 const { google } = require('googleapis');
 const fs = require('fs');
 const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../.env') }); 
+require('dotenv').config();
 
-const TOKEN_PATH = '/tmp/token.json'; // Use /tmp directory for writable access
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
-
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
+const TOKEN_PATH = '/tmp/token.json';
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 function initializeToken() {
     const token = {
-        access_token: ACCESS_TOKEN,
         refresh_token: REFRESH_TOKEN,
-        scope: SCOPES.join(' '),
+        scope: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'].join(' '),
         token_type: 'Bearer',
         expiry_date: Date.now() + 3600 * 1000 // 1 hour
     };
-    fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
     oAuth2Client.setCredentials(token);
+    fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
     console.log('Initialized token from environment variables');
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
     try {
-        const token = fs.readFileSync(TOKEN_PATH);
+        const token = fs.readFileSync(TOKEN_PATH, 'utf8');
         oAuth2Client.setCredentials(JSON.parse(token));
-        console.log('Loaded token from file');
+        console.log('Loaded token from file:', token);
     } catch (error) {
         console.error('Error reading token file:', error.message);
         initializeToken();
@@ -45,22 +42,18 @@ exports.handler = async (event) => {
     }
 
     try {
-        const token = oAuth2Client.credentials;
-        if (!token.refresh_token) {
-            throw new Error('No refresh token available');
-        }
-
-        const newToken = await oAuth2Client.refreshAccessToken();
-        const newAccessToken = newToken.credentials.access_token;
+        const tokenResponse = await oAuth2Client.refreshAccessToken();
+        const newAccessToken = tokenResponse.credentials.access_token;
 
         // Save the new token
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(oAuth2Client.credentials));
+        console.log('Tokens saved:', oAuth2Client.credentials);
 
         return {
             statusCode: 200,
             body: JSON.stringify({
                 accessToken: newAccessToken,
-                refreshToken: token.refresh_token
+                refreshToken: oAuth2Client.credentials.refresh_token || REFRESH_TOKEN,
             }),
         };
     } catch (error) {
