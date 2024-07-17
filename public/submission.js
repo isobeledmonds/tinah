@@ -2,7 +2,7 @@ let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
-let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
+let storedFinalResult = localStorage.getItem("finalResult") || '';
 const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:4000' : 'https://tinah-quiz.netlify.app/.netlify/functions';
 
 function validateEmail(email) {
@@ -35,11 +35,10 @@ function saveResults() {
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
-        console.log('Current finalResult:', finalResult[email]);
 
         resultMap[email] = {
             results: results,
-            finalResult: finalResult[email] || '' // Ensure finalResult is set for each email
+            finalResult: storedFinalResult || '' // Use storedFinalResult for each email
         };
 
         console.log('Updated resultMap entry:', resultMap[email]);
@@ -62,7 +61,7 @@ async function submitData() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList }), // Include finalResult if necessary
+                body: JSON.stringify({ resultsList }), // Send resultsList to the server
             });
 
             if (response.ok) {
@@ -118,11 +117,13 @@ if (!Array.isArray(getResults)) {
     // Store the final result in localStorage
     localStorage.setItem("finalResult", JSON.stringify(finalResult));
 
+    // Update storedFinalResult
+    storedFinalResult = finalResult;
+
     // Verify if the final result is stored correctly
-    let storedFinalResult = localStorage.getItem("finalResult");
     console.log("Stored final result in localStorage:", storedFinalResult);
 }
 
 // Verify if the final result is stored correctly
-let storedFinalResult = localStorage.getItem("finalResult");
+storedFinalResult = localStorage.getItem("finalResult");
 console.log("Stored final result in localStorage:", storedFinalResult);
