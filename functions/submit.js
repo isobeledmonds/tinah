@@ -61,7 +61,7 @@ async function appendToSheet(resultsList) {
         console.log('Appending to Google Sheets:', resultsList);
 
         const values = Object.entries(resultsList).map(([email, data]) => {
-            const results = data.results.join(', ');
+            const results = Array.isArray(data.results) ? data.results.join(', ') : '';
             const finalResult = data.finalResult || '';
             return [email, results, finalResult];
         });
@@ -93,12 +93,17 @@ exports.handler = async (event) => {
         };
     }
 
-    const { resultsList } = JSON.parse(event.body);
-
-    if (!resultsList || typeof resultsList !== 'object') {
+    let resultsList;
+    try {
+        resultsList = JSON.parse(event.body).resultsList;
+        if (!resultsList || typeof resultsList !== 'object') {
+            throw new Error('Invalid request: resultsList is missing or invalid');
+        }
+    } catch (error) {
+        console.error('Error parsing request body:', error.message);
         return {
             statusCode: 400,
-            body: 'Invalid request: resultsList is missing or invalid',
+            body: `Invalid request: ${error.message}`,
         };
     }
 
