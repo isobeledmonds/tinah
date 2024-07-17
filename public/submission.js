@@ -95,7 +95,8 @@ async function submitData() {
             });
 
             if (response.ok) {
-                window.location.href = './results.html', '_blank';
+                //window.location.href = './results.html', '_blank';
+                window.open = './results.html', '_blank';
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
