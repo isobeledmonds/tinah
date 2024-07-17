@@ -47,26 +47,22 @@ async function loadToken() {
     }
 }
 
-async function appendToSheet(resultsList, ListfinalResult) {
+async function appendToSheet(resultsList) {
     console.log('Loading token...');
     await loadToken();  // Ensure the token is loaded before making the request
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
-        console.log('Appending to Google Sheets with resultsList:', resultsList, 'and ListfinalResult:', ListfinalResult);
+        console.log('Appending to Google Sheets with resultsList:', resultsList);
 
         const values = Object.entries(resultsList).map(([email, data]) => {
-            console.log('Processing entry:', email, data);
             const results = Array.isArray(data.results) ? data.results.join(', ') : '';
-            const finalResult = ListfinalResult[email] || '';
-            console.log('Parsed values:', [email, results, finalResult]);
+            const finalResult = data.finalResult || '';
             return [email, results, finalResult];
         });
 
-        console.log('Final values to be appended:', values);
-
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Sheet1!A2:Z100',  // Adjust range as necessary
+            range: 'Results!A2:Z100',  // Adjust range as necessary
             valueInputOption: 'RAW',
             resource: { values },
         });
