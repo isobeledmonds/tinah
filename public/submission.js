@@ -11,8 +11,8 @@ function validateEmail(email) {
     return email.trim() !== "" && email.includes("@") && email.includes(".");
 }
 
-function validateNames(first, last) {
-    return first.trim() !== "" && last.trim() !== "";
+function validateNames(first) {
+    return first.trim() !== "" ;
 }
 
 function enter() {

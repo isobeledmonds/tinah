@@ -199,7 +199,7 @@ footer {
 }
 
 .input-container input {
-    margin-top: 1.25rem; /* 1.25rem is 20px */
+    /* 1.25rem is 20px */
     margin-bottom: 1.25rem; /* 1.25rem is 20px */
     height: 4.75rem; /* 4.75rem is 76px */
     width: 35rem; /* 35rem is 560px */
@@ -242,11 +242,23 @@ footer {
 }
 
 .first-div p{
-margin-left: -1rem;
+    margin-left: -1rem;
+    margin-bottom: 0;
+    line-height: 1.25rem;
+}
+
+.email-div p{
+    margin-left: -1rem;
+    margin-bottom: 0;
+    line-height: 1.25rem;
+}
+
+.first, .input {
+    margin-top: 0.5rem;
 }
 
 .name-input input {
-    margin-top: 1.25rem; /* 1.25rem is 20px */
+   /* 1.25rem is 20px */
     margin-bottom: 1.25rem; /* 1.25rem is 20px */
     height: 3.75rem; /* 4.75rem is 76px */
     width: 17rem; /* 35rem is 560px */
@@ -256,6 +268,15 @@ margin-left: -1rem;
     font-family: helvetica;
     font-size: 1.5rem; /* 1.5rem is 24px */
 }
+
+.required {
+    font-family: 'helvetica';
+    color: #ea1010;
+    font-size: 0.9rem;
+    margin: 0;
+    margin-left: -1rem;
+}
+
 
 .enter-button {
     font-size: 1.25rem; /* 1.25rem is 20px */
