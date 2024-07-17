@@ -102,7 +102,7 @@ async function submitData() {
             });
 
             if (response.ok) {
-                window.location.href('./results.html'); // Open results.html in a new tab
+                window.location.href = './results.html'; // Open results.html in a new tab
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
