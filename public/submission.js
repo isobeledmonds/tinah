@@ -12,7 +12,7 @@ function validateEmail(email) {
 }
 
 function validateNames(first) {
-    return first.trim() !== "" ;
+    return first.trim() !== "";
 }
 
 function enter() {
@@ -20,7 +20,7 @@ function enter() {
     let first = firstName.value;
     let last = lastName.value;
     let isEmailValid = validateEmail(email);
-    let areNamesValid = validateNames(first, last);
+    let areNamesValid = validateNames(first);
     
     if (isEmailValid && areNamesValid) {
         enterButton.removeAttribute("disabled");
