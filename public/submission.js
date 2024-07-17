@@ -1,6 +1,6 @@
 let input = document.querySelector(".input");
-let firstNameInput = document.querySelector(".first");
-let lastNameInput = document.querySelector(".last");
+let firstNameInput = document.querySelector(".first-name");
+let lastNameInput = document.querySelector(".last-name");
 let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
@@ -19,7 +19,9 @@ function enter() {
     let email = input.value;
     let first = firstNameInput.value;
     let last = lastNameInput.value;
-    let isValid = validateEmail(email);
+    let isEmailValid = validateEmail(email);
+    let areNamesValid = validateNames(first, last);
+
     if (isEmailValid && areNamesValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
@@ -39,6 +41,10 @@ input.addEventListener("keypress", function(event) {
         enterButton.click();
     }
 });
+
+firstNameInput.addEventListener("input", enter);
+lastNameInput.addEventListener("input", enter);
+input.addEventListener("input", enter);
 
 function calculateFinalResult(results) {
     return displayResults(results); // Using displayResults function to determine the final result
@@ -89,7 +95,7 @@ async function submitData() {
             });
 
             if (response.ok) {
-                window.location.href = './results.html';
+                window.open('./results.html', '_blank'); // Open results.html in a new tab
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
