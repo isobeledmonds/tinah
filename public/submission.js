@@ -2,7 +2,7 @@ let input = document.querySelector(".input");
 let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
-let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
+let finalResults = JSON.parse(localStorage.getItem("finalResults")) || {};
 const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:4000' : 'https://tinah-quiz.netlify.app/.netlify/functions';
 
 function validateEmail(email) {
@@ -30,22 +30,31 @@ input.addEventListener("keypress", function(event) {
     }
 });
 
+function calculateFinalResult(results) {
+    // Your logic to calculate the final result
+    return displayResults(results); // Using displayResults function to determine the final result
+}
+
 function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
-        console.log('Current finalResult:', finalResult[email]);
+
+        // Calculate final result for each email
+        finalResults[email] = calculateFinalResult(results);
+        console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
             results: results,
-            finalResult: finalResult[email] || '' // Ensure finalResult is set for each email
+            finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
         };
 
         console.log('Updated resultMap entry:', resultMap[email]);
     });
 
     localStorage.setItem("resultList", JSON.stringify(resultMap));
+    localStorage.setItem("finalResults", JSON.stringify(finalResults)); // Store finalResults in localStorage
     console.log('Final resultMap:', resultMap);
 }
 
@@ -111,18 +120,13 @@ console.log("Retrieved results from localStorage:", getResults);
 if (!Array.isArray(getResults)) {
     console.error("Invalid results in localStorage");
 } else {
-    // Determine the final result
-    let finalResult = displayResults(getResults);
-    console.log("Calculated final result:", finalResult);
+    // Calculate and store final results for each email
+    emailList.forEach(email => {
+        finalResults[email] = calculateFinalResult(getResults);
+        console.log("Calculated final result for", email, ":", finalResults[email]);
+    });
 
-    // Store the final result in localStorage
-    localStorage.setItem("finalResult", JSON.stringify(finalResult));
-
-    // Verify if the final result is stored correctly
-    let storedFinalResult = localStorage.getItem("finalResult");
-    console.log("Stored final result in localStorage:", storedFinalResult);
+    // Store the final results in localStorage
+    localStorage.setItem("finalResults", JSON.stringify(finalResults));
+    console.log("Stored final results in localStorage:", finalResults);
 }
-
-// Verify if the final result is stored correctly
-let storedFinalResult = localStorage.getItem("finalResult");
-console.log("Stored final result in localStorage:", storedFinalResult);
