@@ -59,7 +59,7 @@ async function submitData() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList, ListfinalRefult }), // Include finalResult if necessary
+                body: JSON.stringify({ resultsList, ListfinalResult }), // Include finalResult if necessary
             });
 
             if (response.ok) {
