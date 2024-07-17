@@ -47,22 +47,18 @@ async function loadToken() {
     }
 }
 
-async function appendToSheet(resultsList, ListfinalResult) {
+async function appendToSheet(resultsList) {
     console.log('Loading token...');
     await loadToken();  // Ensure the token is loaded before making the request
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
-        console.log('Appending to Google Sheets with resultsList:', resultsList, 'and ListfinalResult:', ListfinalResult);
+        console.log('Appending to Google Sheets with resultsList:', resultsList);
 
         const values = Object.entries(resultsList).map(([email, data]) => {
-            console.log('Processing entry:', email, data);
             const results = Array.isArray(data.results) ? data.results.join(', ') : '';
-            const finalResult = ListfinalResult[email] || '';
-            console.log('Parsed values:', [email, results, finalResult]);
+            const finalResult = data.finalResult || '';
             return [email, results, finalResult];
         });
-
-        console.log('Final values to be appended:', values);
 
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
@@ -90,18 +86,11 @@ exports.handler = async (event) => {
         };
     }
 
-    let resultsList, ListfinalResult;
+    let resultsList;
     try {
-        const body = JSON.parse(event.body);
-        resultsList = body.resultsList;
-        ListfinalResult = body.ListfinalResult;
-
+        resultsList = JSON.parse(event.body).resultsList;
         if (!resultsList || typeof resultsList !== 'object') {
             throw new Error('Invalid request: resultsList is missing or invalid');
-        }
-
-        if (!ListfinalResult || typeof ListfinalResult !== 'object') {
-            throw new Error('Invalid request: ListfinalResult is missing or invalid');
         }
     } catch (error) {
         console.error('Error parsing request body:', error.message);
@@ -112,8 +101,8 @@ exports.handler = async (event) => {
     }
 
     try {
-        console.log('Processing submission for resultsList:', resultsList, 'and ListfinalResult:', ListfinalResult);
-        const data = await appendToSheet(resultsList, ListfinalResult);
+        console.log('Processing submission for resultsList:', resultsList);
+        const data = await appendToSheet(resultsList);
         return {
             statusCode: 200,
             body: JSON.stringify({ status: 'success', data }),
