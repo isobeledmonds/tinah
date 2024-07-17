@@ -47,9 +47,10 @@ function saveResults() {
 async function submitData() {
     let email = input.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
-    let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
+    let ListfinalResult = JSON.parse(localStorage.getItem("finalResult")) || {};
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
+    console.log("Submitting ListfinalResult:", JSON.stringify(ListfinalResult));
 
     if (validateEmail(email)) {
         try {
@@ -58,7 +59,7 @@ async function submitData() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ resultsList, finalResult }), // Include finalResult if necessary
+                body: JSON.stringify({ resultsList, ListfinalRefult }), // Include finalResult if necessary
             });
 
             if (response.ok) {
