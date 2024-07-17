@@ -1,4 +1,6 @@
 let input = document.querySelector(".input");
+let firstNameInput = document.querySelector(".first");
+let lastNameInput = document.querySelector(".last");
 let enterButton = document.querySelector(".enter-button");
 let emailList = JSON.parse(localStorage.getItem("emails")) || [];
 let results = JSON.parse(localStorage.getItem("results")) || [];
@@ -11,12 +13,16 @@ function validateEmail(email) {
 
 function enter() {
     let email = input.value;
+    let first = firstNameInput.value;
+    let last = lastNameInput.value;
     let isValid = validateEmail(email);
     if (isValid) {
         enterButton.removeAttribute("disabled");
         if (!emailList.includes(email)) {
             emailList.push(email);
             localStorage.setItem("emails", JSON.stringify(emailList));
+            localStorage.setItem("firstname", JSON.stringify(first));
+            localStorage.setItem("lastname", JSON.stringify(last));
         }
     } else {
         enterButton.setAttribute("disabled", "disabled");
