@@ -16,10 +16,6 @@ function initializeToken() {
     oAuth2Client.setCredentials(token);
     fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
     console.log('Initialized token from environment variables and saved to /tmp/token.json');
-
-    // Update environment variables
-    process.env.ACCESS_TOKEN = token.access_token;
-    process.env.REFRESH_TOKEN = token.refresh_token;
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
@@ -51,10 +47,6 @@ exports.handler = async (event) => {
         // Save the new token
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(oAuth2Client.credentials));
         console.log('Tokens refreshed and saved:', oAuth2Client.credentials);
-
-        // Update environment variables
-        process.env.ACCESS_TOKEN = oAuth2Client.credentials.access_token;
-        process.env.REFRESH_TOKEN = oAuth2Client.credentials.refresh_token || REFRESH_TOKEN;
 
         return {
             statusCode: 200,

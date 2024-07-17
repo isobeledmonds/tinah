@@ -3,7 +3,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const TOKEN_PATH = '/tmp/token.json';
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 async function loadToken() {
@@ -22,20 +22,28 @@ async function loadToken() {
             console.error('Error reading token file:', error.message);
             throw error;
         }
-    } else if (ACCESS_TOKEN && REFRESH_TOKEN) {
-        console.log('Token file not found. Using environment variables.');
-        const token = {
-            access_token: ACCESS_TOKEN,
-            refresh_token: REFRESH_TOKEN,
-            scope: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'].join(' '),
-            token_type: 'Bearer',
-            expiry_date: Date.now() + 3600 * 1000 // 1 hour
-        };
-        oAuth2Client.setCredentials(token);
-        console.log('Initialized token from environment variables:', token);
     } else {
-        console.error('Token file not found and no environment variables set.');
-        throw new Error('Token file not found and no environment variables set');
+        console.log('Token file not found. Using refresh token to generate new access token.');
+        oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
+        try {
+            const tokenResponse = await oAuth2Client.refreshAccessToken();
+            const newAccessToken = tokenResponse.credentials.access_token;
+
+            // Save the new token to TOKEN_PATH
+            const token = {
+                access_token: newAccessToken,
+                refresh_token: REFRESH_TOKEN,
+                scope: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'].join(' '),
+                token_type: 'Bearer',
+                expiry_date: Date.now() + 3600 * 1000 // 1 hour
+            };
+            oAuth2Client.setCredentials(token);
+            fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
+            console.log('New access token generated and saved:', token);
+        } catch (error) {
+            console.error('Error generating new access token:', error.message);
+            throw new Error('Token file not found and no valid refresh token to generate a new access token');
+        }
     }
 }
 
