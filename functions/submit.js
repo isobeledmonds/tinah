@@ -3,7 +3,7 @@ const fs = require('fs');
 require('dotenv').config();
 
 const TOKEN_PATH = '/tmp/token.json';
-const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, ACCESS_TOKEN, REFRESH_TOKEN } = process.env;
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 async function loadToken() {
@@ -22,9 +22,20 @@ async function loadToken() {
             console.error('Error reading token file:', error.message);
             throw error;
         }
+    } else if (ACCESS_TOKEN && REFRESH_TOKEN) {
+        console.log('Token file not found. Using environment variables.');
+        const token = {
+            access_token: ACCESS_TOKEN,
+            refresh_token: REFRESH_TOKEN,
+            scope: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'].join(' '),
+            token_type: 'Bearer',
+            expiry_date: Date.now() + 3600 * 1000 // 1 hour
+        };
+        oAuth2Client.setCredentials(token);
+        console.log('Initialized token from environment variables:', token);
     } else {
-        console.error('Token file not found at:', TOKEN_PATH);
-        throw new Error('Token file not found');
+        console.error('Token file not found and no environment variables set.');
+        throw new Error('Token file not found and no environment variables set');
     }
 }
 

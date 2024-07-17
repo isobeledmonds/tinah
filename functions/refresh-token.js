@@ -1,6 +1,5 @@
 const { google } = require('googleapis');
 const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
 
 const TOKEN_PATH = '/tmp/token.json';
@@ -16,14 +15,18 @@ function initializeToken() {
     };
     oAuth2Client.setCredentials(token);
     fs.writeFileSync(TOKEN_PATH, JSON.stringify(token));
-    console.log('Initialized token from environment variables');
+    console.log('Initialized token from environment variables and saved to /tmp/token.json');
+
+    // Update environment variables
+    process.env.ACCESS_TOKEN = token.access_token;
+    process.env.REFRESH_TOKEN = token.refresh_token;
 }
 
 if (fs.existsSync(TOKEN_PATH)) {
     try {
         const token = fs.readFileSync(TOKEN_PATH, 'utf8');
         oAuth2Client.setCredentials(JSON.parse(token));
-        console.log('Loaded token from file:', token);
+        console.log('Loaded token from file:', JSON.parse(token));
     } catch (error) {
         console.error('Error reading token file:', error.message);
         initializeToken();
@@ -47,7 +50,11 @@ exports.handler = async (event) => {
 
         // Save the new token
         fs.writeFileSync(TOKEN_PATH, JSON.stringify(oAuth2Client.credentials));
-        console.log('Tokens saved:', oAuth2Client.credentials);
+        console.log('Tokens refreshed and saved:', oAuth2Client.credentials);
+
+        // Update environment variables
+        process.env.ACCESS_TOKEN = oAuth2Client.credentials.access_token;
+        process.env.REFRESH_TOKEN = oAuth2Client.credentials.refresh_token || REFRESH_TOKEN;
 
         return {
             statusCode: 200,
@@ -58,8 +65,6 @@ exports.handler = async (event) => {
         };
     } catch (error) {
         console.error('Error refreshing token:', error.message);
-        console.error('Error details:', error);
-        console.error('Error stack:', error.stack);
         return {
             statusCode: 500,
             body: `Error refreshing token: ${error.message}`,
