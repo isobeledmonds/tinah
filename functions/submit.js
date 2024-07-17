@@ -3,12 +3,19 @@ const fs = require('fs');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
+// File path to store the token
 const TOKEN_PATH = '/tmp/token.json';
+
+// Scopes for Google APIs
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
 
+// Environment variables fetched from Netlify
 const { CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, SPREADSHEET_ID, REFRESH_TOKEN } = process.env;
+
+// Create OAuth2 client
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
+// Function to initialize the token using the refresh token
 async function initializeToken() {
     oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
     try {
@@ -22,34 +29,40 @@ async function initializeToken() {
     }
 }
 
-if (fs.existsSync(TOKEN_PATH)) {
-    try {
-        const token = fs.readFileSync(TOKEN_PATH);
-        oAuth2Client.setCredentials(JSON.parse(token));
-        console.log('Loaded token from file');
-    } catch (error) {
-        console.error('Error reading token file:', error.message);
-        initializeToken();
+// Function to load the token from the local file
+async function loadToken() {
+    if (fs.existsSync(TOKEN_PATH)) {
+        try {
+            const token = fs.readFileSync(TOKEN_PATH);
+            oAuth2Client.setCredentials(JSON.parse(token));
+            console.log('Loaded token from file');
+        } catch (error) {
+            console.error('Error reading token file:', error.message);
+            await initializeToken();
+        }
+    } else {
+        console.log('Token file not found, creating from environment variables.');
+        await initializeToken();
     }
-} else {
-    console.log('Token file not found, creating from environment variables.');
-    initializeToken();
 }
 
-oAuth2Client.on('tokens', (tokens) => {
+// Event listener to save new tokens when they are refreshed
+oAuth2Client.on('tokens', async (tokens) => {
     if (tokens.refresh_token) {
         console.log('Saving new refresh token');
-        fs.writeFileSync(TOKEN_PATH, JSON.stringify(tokens));
+        await fs.promises.writeFile(TOKEN_PATH, JSON.stringify(tokens));
     }
 });
 
+// Function to append data to Google Sheets
 async function appendToSheet(resultsList) {
+    await loadToken();  // Ensure the token is loaded before making the request
     const sheets = google.sheets({ version: 'v4', auth: oAuth2Client });
     try {
         console.log('Appending to Google Sheets:', resultsList);
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Results!A2:Z',
+            range: 'Results!A2:Z100',
             valueInputOption: 'RAW',
             resource: {
                 values: [
@@ -70,6 +83,7 @@ async function appendToSheet(resultsList) {
     }
 }
 
+// Netlify function handler
 exports.handler = async (event) => {
     if (event.httpMethod !== 'POST') {
         return {
