@@ -53,6 +53,8 @@ function calculateFinalResult(results) {
 
 function saveResults() {
     let resultMap = JSON.parse(localStorage.getItem("resultList")) || {};
+    let first = localStorage.getItem("firstName");
+    let last = localStorage.getItem("lastName");
 
     emailList.forEach(email => {
         console.log('Processing email:', email);
@@ -62,8 +64,8 @@ function saveResults() {
         console.log('Calculated final result for', email, ':', finalResults[email]);
 
         resultMap[email] = {
-            firstName: localStorage.getItem("firstName"),
-            lastName: localStorage.getItem("lastName"),
+            firstName: first,
+            lastName: last,
             email: email,
             results: results,
             finalResult: finalResults[email] || '' // Ensure finalResult is set for each email
@@ -79,11 +81,19 @@ function saveResults() {
 
 async function submitData() {
     let email = input.value;
+    let first = firstNameInput.value;
+    let isFirstNameValid = validateFirstName(first);
+
+    if (!isFirstNameValid) {
+        alert("Please enter your first name.");
+        return;
+    }
+
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
 
-    if (validateEmail(email)) {
+    if (validateEmail(email) && isFirstNameValid) {
         try {
             const response = await fetch(`${API_BASE_URL}/submit`, {
                 method: 'POST',
@@ -94,7 +104,7 @@ async function submitData() {
             });
 
             if (response.ok) {
-                window.location.href = './results.html';
+                window.open('./results.html', '_blank'); // Open results.html in a new tab
             } else {
                 const errorText = await response.text();
                 console.error('Error submitting data:', errorText);
@@ -104,9 +114,10 @@ async function submitData() {
             console.error('Error submitting data:', error);
             alert('Error submitting data');
         }
+    } else {
+        alert("Please ensure all fields are filled out correctly.");
     }
 }
-
 
 enterButton.addEventListener('click', function(event) {
     event.preventDefault();
