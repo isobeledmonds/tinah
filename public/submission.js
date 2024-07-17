@@ -47,6 +47,7 @@ function saveResults() {
 async function submitData() {
     let email = input.value;
     let resultsList = JSON.parse(localStorage.getItem("resultList")) || {};
+    let finalResult = JSON.parse(localStorage.getItem("finalResult")) || [];
 
     console.log("Submitting resultsList:", JSON.stringify(resultsList));
 
