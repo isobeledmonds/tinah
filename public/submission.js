@@ -37,8 +37,6 @@ function enter() {
     }
 }
 
-input.addEventListener("input", enter);
-firstNameInput.addEventListener("input", enter);
 
 input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
