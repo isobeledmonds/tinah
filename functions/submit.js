@@ -55,16 +55,14 @@ async function appendToSheet(resultsList) {
         console.log('Appending to Google Sheets with resultsList:', resultsList);
 
         const values = Object.entries(resultsList).map(([email, data]) => {
-            const firstName = data.firstName || '';
-            const lastName = data.lastName || '';
             const results = Array.isArray(data.results) ? data.results.join(', ') : '';
             const finalResult = data.finalResult || '';
-            return [firstName, lastName, email, results, finalResult];
+            return [email, results, finalResult];
         });
 
         const response = await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Results!A2:E',  // Adjust range as necessary
+            range: 'Results!A2:Z100',  // Adjust range as necessary
             valueInputOption: 'RAW',
             resource: { values },
         });
