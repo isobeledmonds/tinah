@@ -72,6 +72,10 @@
     align-items: center;
     cursor: pointer;
     background-image: url(../resources/start.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem;
   }
   
   .fom {
