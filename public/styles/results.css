@@ -21,6 +21,9 @@
 
 span2.list-heading {
   font-weight: bold;
+
+  span.journal {
+    font-size: 1.25rem;
 }
 
 .email-container p {
@@ -195,6 +198,7 @@ span2.list-heading {
 .read-more a {
   color: #f9f98f;
 }
+
 
 
 /*.find-out-more ul {
