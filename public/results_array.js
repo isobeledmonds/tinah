@@ -129,9 +129,9 @@ let findOutMoreObj = {
 </ul>
 <p>If you love this exercise you might want to consider checking out the journals on the TINAH marketplace which will guide you through this process even further. Here are some journals we love to get you started…</p>
 <ul>
-    <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-habit-journal" target="_blank">Habit Journal by MalPaper</a></li>
-    <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">The Lover Journal from Wilde House Paper</a></li>
-    <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/day-of-gratitude-journal-cotton" target="_blank">A day of gratitude journal from MalPaper</a></li>
+    <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-habit-journal" target="_blank">Habit Journal by MalPaper</a></li>
+    <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">The Lover Journal from Wilde House Paper</a></li>
+    <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/day-of-gratitude-journal-cotton" target="_blank">A day of gratitude journal from MalPaper</a></li>
 </ul>
 </p>
 `,
@@ -155,11 +155,11 @@ let findOutMoreObj = {
             <p>Keep exploring new areas of growth and healing. Whether it’s through books, workshops, or online courses, continuous learning can provide fresh perspectives and techniques.</p>
             <p class="heading">Some resources for your to check out:</p>
             <ul>
-                <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain your brain: Cognitive Behavioural Therapy in 7 weeks</a></li>
-                <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/scattered-minds-the-origins-and-healing-of-attention-deficit-disorder-1" target="_blank">Scattered Minds</a></li>
-                <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/questions-to-empower-card-deck" target="_blank">Questions to empower card deck</a></li>
-                <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/recovery-max%E2%84%A2-ice-bath" target="_blank">Lumi Recovery Max Ice Bath</a></li>
-                <li><span class"journal">Journal: </span><a href="https://timeisnotahealer.com/products/premium-acupressure-mat-and-pillow-set-black" target="_blank">Unmera Acupressure Mat</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain your brain: Cognitive Behavioural Therapy in 7 weeks</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/scattered-minds-the-origins-and-healing-of-attention-deficit-disorder-1" target="_blank">Scattered Minds</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/questions-to-empower-card-deck" target="_blank">Questions to empower card deck</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/recovery-max%E2%84%A2-ice-bath" target="_blank">Lumi Recovery Max Ice Bath</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/premium-acupressure-mat-and-pillow-set-black" target="_blank">Unmera Acupressure Mat</a></li>
             </ul><br>
             <p class="post-ul">Have you tried subconscious work before? Tapping into your subconscious mind can really help you take your healing to the next level and understand why you are the way you are, reprogram any limitations and beliefs, and figure out the next steps to achieving your goals. If this sounds interesting to you <a href="https://timeisnotahealer.com/products/to-be-magnetic-the-pathway-membership" target="_blank">The to-be magnetic pathway membership</a> might be something to consider. You’ll get access to workshops and guided meditations that will take you into your subconscious to start manifesting the life you really want. Find out more about it here!</p>
             <p class="heading">Seek Professional Growth:</p>
