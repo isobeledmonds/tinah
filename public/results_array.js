@@ -121,11 +121,11 @@ let findOutMoreObj = {
 <p>
 <span>Journal prompts:</span><br>
 <ul>
-    <li><span2 class="list-heading">What are 3 things you are grateful for in your life right now?</span> <br><span class="indent">How do these things make you feel and why do they make you feel that way?</span></li>
-    <li><span2 class="list-heading">Think about a recent situation that triggered a strong emotional response.</span> <br><span class="indent">Describe the event and your reaction. What thoughts were behind your reaction? Why do you think you felt so triggered by this? Have you ever felt this way before?</span></li>
-    <li><span2 class="list-heading">What is your favourite thing to do/eat/watch - something that makes you really feel something?</span> <br><span class="indent">Write about the last time you experienced it and the feeling that presented. Why do you love that feeling so much and how is it connected to the thing you were doing?</span></li>
-    <li><span2 class="list-heading">Are there any repeated behaviors or thought patterns that keep coming up for you?</span> <br><span class="indent">Why do you think this is? When did you first experience these? What do you think they are trying to tell you?</span></li>
-    <li><span2 class="list-heading">Reflect on the last time you said no!</span> <br><span class="indent">What was the situation and how did that feel for you?</span></li>
+    <li><span2 class="list-heading">What are 3 things you are grateful for in your life right now?</span> <br><span3 class="indent">How do these things make you feel and why do they make you feel that way?</span></li>
+    <li><span2 class="list-heading">Think about a recent situation that triggered a strong emotional response.</span> <br><span3 class="indent">Describe the event and your reaction. What thoughts were behind your reaction? Why do you think you felt so triggered by this? Have you ever felt this way before?</span></li>
+    <li><span2 class="list-heading">What is your favourite thing to do/eat/watch - something that makes you really feel something?</span> <br><span3 class="indent">Write about the last time you experienced it and the feeling that presented. Why do you love that feeling so much and how is it connected to the thing you were doing?</span></li>
+    <li><span2 class="list-heading">Are there any repeated behaviors or thought patterns that keep coming up for you?</span> <br><span3 class="indent">Why do you think this is? When did you first experience these? What do you think they are trying to tell you?</span></li>
+    <li><span2 class="list-heading">Reflect on the last time you said no!</span> <br><span3 class="indent">What was the situation and how did that feel for you?</span></li>
 </ul>
 <p>If you love this exercise you might want to consider checking out the journals on the TINAH marketplace which will guide you through this process even further. Here are some journals we love to get you started…</p>
 <ul>
