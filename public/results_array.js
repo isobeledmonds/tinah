@@ -72,9 +72,9 @@ let readMoreObj = {
             <p class="content-rm">Finding effective ways to manage stress is essential. Experiment with different stress-relief techniques to find what works best for you. This could include mindfulness meditation, deep breathing exercises, progressive muscle relaxation, or spending time in nature.</p>
             <p class="content-rm">One of TINAH’s favorite ways to process & release stress is through Journaling! Check out some from our favourite brands:</p>
             <ul>
-                <li><span>Journal: </span><a href="https://timeisnotahealer.com/products/the-habit-journal" target="_blank">Habit Journal by MalPaper</a></li>
-                <li><span>Journal: </span><a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">The Lover Journal from Wilde House Paper</a></li>
-                <li><span>Journal: </span><a href="https://timeisnotahealer.com/products/day-of-gratitude-journal-cotton" target="_blank">A day of gratitude journal from MalPaper</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-habit-journal" target="_blank">Habit Journal by MalPaper</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">The Lover Journal from Wilde House Paper</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/day-of-gratitude-journal-cotton" target="_blank">A day of gratitude journal from MalPaper</a></li>
             </ul>
         </p>`,
 
