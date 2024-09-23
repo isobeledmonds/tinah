@@ -138,7 +138,7 @@ let findOutMoreObj = {
 
     "b": `
         <p>
-            By focusing on foundational care and taking one step at a time, you’ll begin to find your path to healing and mental well-being. Explore the resources and tools available on the TINAH marketplace to support you in this process. Click here to discover more! LINK TO RESOURCES PAGE ON TINAH.
+            By focusing on foundational care and taking one step at a time, you’ll begin to find your path to healing and mental well-being. Explore the resources and tools available on the TINAH marketplace to support you in this process. Click <a href="https://timeisnotahealer.com/pages/routines" target="_blank" here</a> to discover more! LINK TO RESOURCES PAGE ON TINAH.
         </p>`,
 
     "c": `
