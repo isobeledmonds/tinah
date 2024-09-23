@@ -42,6 +42,7 @@ span.journal {
     text-align: center;
     width: 90%;
     font-size: 2.75rem;
+    color: #f9f98f;
   }
 
 
@@ -179,7 +180,9 @@ span.journal {
 }
 
 .break-line {
-    margin-top: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    color: #f9f98f;
 }
 
 .read-more .heading {
@@ -200,6 +203,9 @@ span.journal {
   color: #f9f98f;
 }
 
+span.yellow {
+  color: #f9f98f;
+}
 
 
 /*.find-out-more ul {

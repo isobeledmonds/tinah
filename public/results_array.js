@@ -115,7 +115,7 @@ let readMoreObj = {
 
 let findOutMoreObj = {
     "a": `<p>
-    <span>TINAHs recommendations for starting your mental wellbeing healing journey:</span></p>
+    <span class="yellow">TINAHs recommendations for starting your mental wellbeing healing journey:</span></p>
     <p>A good place to start is by practicing self-reflection. Journaling can help you identify your thoughts and feelings. Below we’ve given you a few journal prompts for FREE, so grab a notebook and start writing down some of your thoughts.
 </p>
 <p>
