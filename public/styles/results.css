@@ -86,6 +86,7 @@ span.journal {
     background-position: center;
     background-repeat: no-repeat;
     padding: 2rem;
+    width: 25%;
   }
   
   .fom {
@@ -171,7 +172,8 @@ span.journal {
 }
 
 .read-more, .find-out-more {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     transition: height 0.3s ease;
 }
 
@@ -180,9 +182,12 @@ span.journal {
 }
 
 .break-line {
-    margin-top: 2rem;
     margin-bottom: 2rem;
-    color: #f9f98f;
+   
+}
+
+.break-line svg {
+  color: #f9f98f;
 }
 
 .read-more .heading {
