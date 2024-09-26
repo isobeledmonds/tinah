@@ -56,7 +56,6 @@ let readMoreObj = {
 </p>
             <p>When it comes to anxiety or feeling down, it's better to start early. The sooner you tune in to your feelings, the easier it will be to stay mentally healthy.</p>
             <p>We suggest you start with an exercise to help you understand your feelings. Healing begins with knowing yourself. This is a great chance to learn about your needs and limits, and why you feel certain ways in different situations.</p>
-            <p>Our best suggestion for you would be to begin with an exercise that helps you really tune in to how you are feeling. The starting point to healing yourself begins with self-awareness. This is a great opportunity to begin to recognize your own needs and boundaries, and why you might be feeling certain ways in different situations.
         </p>
         `,
 
