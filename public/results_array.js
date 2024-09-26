@@ -5,6 +5,10 @@
 let getResults = JSON.parse(localStorage.getItem("results"));
 console.log(getResults)
 
+
+
+
+
 let healingStyleTitleObj = {
     "a": "The Unaware Wanderer",
     "b": "The Clarity Chaser",
@@ -15,24 +19,24 @@ let healingStyleTitleObj = {
 let healingStyleContentObj = {
     "a": `
         <p>
-            <span>Sounds like you don’t know where to start</span></p>
-            <p>It sounds like maybe you’re feeling unsure of where to begin to help yourself. This could be a sign you subconsciously feel overwhelmed or disconnected from your own needs. This may be because of a lack of awareness of your personal mental and emotional state, or you have shut off your emotions over time because they felt too much to handle.
+            <span>You're not sure where to start, and that's okay.</span></p>
+            <p>You might feel lost about how to help yourself. This could mean you're overwhelmed or disconnected from your needs. Maybe you're not aware of how you feel, or you've shut off your emotions because they seemed too hard to handle.
         </p>`,
 
     "b": `
         <p>
-            <span>Sounds like you want to make some changes, but don’t know which path is best for you</span></p>
-            <p>Doing a deep dive into your history & feelings in a therapy session seems like A LOT. You’re not sure if you’re totally comfortable starting there. But you recognize that you have all of this pent-up emotion & daily stress that needs to be addressed sooner rather than later…or soon you’ll find yourself in a hole you can’t get out of.<br>
-            <p>This is a common stage where many people find themselves. Recognizing your needs is an important step, and now it's about building a roadmap to meet those needs that you can REALISTICALLY follow. Feeling uncertain about the steps you need to take can stem from a variety of reasons, including information overload, fear of failure, or simply not knowing where to start.<br>
-            <p>If you're not ready to deep dive into therapy, the best place to start is foundational care practices. These practices—sleep, nutrition, body movement, and daily stress management—create a strong foundation for your mental health, offering stability, clarity, and resilience that can make it easier to navigate more intensive healing processes later on.
+            <span>Sounds like you want to make some changes, but don’t know which path is best for you.</span></p>
+            <p>Doing a deep dive into your history & feelings in a therapy session seems like A LOT. You’re not sure if you’re totally comfortable starting there. But you recognize that you have all of this pent-up emotion & daily stress that needs to be addressed sooner rather than later you’ll find yourself in a hole you can’t get out of.<br>
+            <p>This is a common stage where many people find themselves. Recognizing your needs is an important step. From there, it's about building a roadmap to meet those needs that you can REALISTICALLY follow. Feeling uncertain about the steps you need to take can stem from a variety of reasons. These may include information overload, fear of failure, or simply not knowing where to start.<br>
+            <p>If you're not ready to deep dive into therapy, the best place to start is foundational care practices. These practices—sleep, nutrition, body movement, and daily stress management—create a strong foundation for your mental health. They offer stability, clarity, and resilience that can make it easier to navigate more intensive healing processes later on.
         </p>`,
 
     "c": `
         <p>
-            <span>It sounds like you have a clear understanding of your needs for your mental well-being, but you feel stuck and/or find yourself avoiding taking action</span></p>
+            <span>It sounds like you have a clear understanding of your needs for your mental well-being, but you feel stuck and/or find yourself avoiding taking action.</span></p>
             <p>This is a common experience where many people find themselves aware of what they need to do but are held back by various factors. Feeling stuck or avoiding action can stem from fear, self-doubt, past experiences, or a lack of motivation.</p>
-            <p>Taking action often requires stepping out of your comfort zone. Fear of the unknown or of not succeeding can be paralyzing. This fear can keep you in a cycle of inaction, even when you know what steps to take. The prospect of making significant changes can be overwhelming. When the steps ahead seem too large or numerous, it's easy to feel stuck and unsure where to begin. Not to mention that negative past experiences can create a mental barrier. If you’ve tried and struggled before, it’s natural to feel hesitant about trying again. And without a supportive environment or encouragement, it can be difficult to find the motivation to move forward. Which is where self-discipline is required.</p>
-            <p>It’s important to understand that this is a normal part of the healing journey. Acknowledging these feelings is the first step towards overcoming them. As cliche as it then sounds, next, is all about taking SMALL steps to implement better habits around managing your mental, emotional & physical well-being.
+            <p>Taking action often requires stepping out of your comfort zone. Fear of the unknown or of not succeeding can be paralyzing. This fear can keep you in a cycle of inaction, even when you know what steps to take. The prospect of making significant changes can be overwhelming. When the steps ahead seem too large or numerous, it's easy to feel stuck and unsure where to begin. Not to mention that negative past experiences can create a mental barrier. If you’ve tried and struggled before, it’s natural to feel hesitant about trying again. And without a supportive environment or encouragement, it can be difficult to find the motivation to move forward. This is where self-discipline is required.</p>
+            <p>It’s important to understand that this is a normal part of the healing journey. Acknowledging these feelings is the first step towards overcoming them. As cliche as it then sounds, the next step is all about taking SMALL steps to implement better habits around managing your mental, emotional & physical well-being.
         </p>`,
 
     "d": `
@@ -47,27 +51,28 @@ let healingStyleContentObj = {
 let readMoreObj = {
     "a": `
         <p>
-            <span>It’s important to recognize this is normal</span></p>
-            <p>This is simply your body trying to protect you from feeling a certain way, so the way you have been responding is not wrong, however not feeling your emotions and meeting your own needs may not be good for you in the longer term.</p>
-            <p>Distracting yourself, or not setting boundaries has probably been working well for you up until this point, but in the long-term you may start to feel some more intense emotions bubble up and there is a possibility later down the line it might become too much to handle.</p>
-            <p>When it comes to dealing with feelings of anxiety or low-mood - prevention can often be the cure, so the earlier you can start to tune in with your mental and emotional state, the easier you are going to find maintaining your mental well-being in the future.</p>
+            <span>It’s important to recognize this is normal.</span></p>
+            <p>Your body is trying to protect you. While ignoring your feelings might have worked so far, it often is not good for you in the long run. If you keep pushing your emotions away, they can build up and become too much later on.
+</p>
+            <p>When it comes to anxiety or feeling down, it's better to start early. The sooner you tune in to your feelings, the easier it will be to stay mentally healthy.</p>
+            <p>We suggest you start with an exercise to help you understand your feelings. Healing begins with knowing yourself. This is a great chance to learn about your needs and limits, and why you feel certain ways in different situations.</p>
             <p>Our best suggestion for you would be to begin with an exercise that helps you really tune in to how you are feeling. The starting point to healing yourself begins with self-awareness. This is a great opportunity to begin to recognize your own needs and boundaries, and why you might be feeling certain ways in different situations.
         </p>
         `,
 
     "b": `
         <p>
-            <span>TINAH’s Recommendations for You To help you further along your journey, consider the following actions:</span></p>
+            <span>TINAH’s Recommendations to help you further along your journey, consider the following actions:</span></p>
             <p class="heading">Sleep:</p>
             <p class="content-rm">Ensuring you get quality sleep is crucial for mental health. Aim for 7-9 hours of sleep per night. Develop a consistent sleep schedule by going to bed and waking up at the same time every day, even on weekends. Create a relaxing bedtime routine to signal to your body that it's time to wind down. This might include activities like reading a book, taking a warm bath, or practicing gentle yoga.</p>
-            <p class="content-rm">Some of our favorite sleep hygiene practices at TINAH are to start unwinding with the <a href="https://timeisnotahealer.com/products/sleepy-bunny" target="_blank">Teapsy Sleep Bunny</a> blend, whilst you use your <a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">Wilde House Paper Nightly Journal</a> to get out any remaining thoughts from the day. When you are ready for bed, switch on your <a href="https://timeisnotahealer.com/products/sleepy-bunny" target="_blank">Zeez Sleep Pebble</a>, which mimics the alpha, theta and delta frequencies generated by the brain of a good sleeper to help your body get into a good regular sleep pattern.</p>
+            <p class="content-rm">Some of our favorite sleep hygiene practices at TINAH are to start unwinding with the <a href="https://timeisnotahealer.com/products/sleepy-bunny" target="_blank">Teapsy Sleep Bunny</a> blend, while you use your <a href="https://timeisnotahealer.com/products/the-lover-journal" target="_blank">Wilde House Paper Nightly Journal</a> to get out any remaining thoughts from the day. When you are ready for bed, switch on your <a href="https://timeisnotahealer.com/products/sleepy-bunny" target="_blank">Zeez Sleep Pebble</a>, which mimics the alpha, theta and delta frequencies generated by the brain of a good sleeper to help your body get into a good regular sleep pattern.</p>
             <p class="heading">Nutrition:</p>
             <p class="content-rm">A balanced diet can significantly impact your mood and energy levels. Focus on eating a variety of whole foods, including fruits, vegetables, lean proteins, and whole grains. Stay hydrated by drinking plenty of water throughout the day. And most importantly, limit the intake of processed foods, caffeine, and sugar, which can cause energy spikes and crashes.</p>
             <p class="content-rm">We at TINAH understand the reality of needing sweet treats now and again or that delicious cup of coffee. We love the <a href="https://timeisnotahealer.com/products/box-of-7-bestselling-collection" target="_blank">Cosmic Dealer Chocolate</a>, <a href="https://timeisnotahealer.com/products/ayurvedic-teas-infusions" target="_blank">Ayurvedic Tea Infusions</a> & <a href="https://timeisnotahealer.com/products/herbal-koffee" target="_blank">Coffee Alternatives</a> to satisfy that desire without then feeling like crap!</p>
             <p class="heading">Body Movement:</p>
             <p class="content-rm">Regular physical activity can improve your mood and reduce anxiety. Aim for at least 30 minutes of moderate exercise most days of the week. This can be anything from walking, running, or biking to yoga or dancing. Choose activities that you enjoy, as this will make it easier to stick with them.</p>
-            <p class="content-rm">We get it though that sometimes making the leap to get back into the gym can be really hard. Like REALLY HARD. At TINAH, we recognize the importance of taking baby steps, but TAKING THEM none-the-less. We recommend the <a href="https://www.yogi-bare.co.uk/TINAH" target="_blank">Yogi Bare Ever Grip Mat</a> for getting started with basic body movements at home! PSST… Use code <span>TINAH</span> at checkout and you’ll get 15% off your order.</p>
-            <p class="content-rm">If you aren’t quite there mentally yet, we recommend checking out the books <a href="https://timeisnotahealer.com/products/dopamine-nation-finding-balance-in-the-age-of-indulgence" target="_blank">Dopamine Nation</a> and <a href="https://timeisnotahealer.com/products/atomic-habits-the-life-changing-million-copy-1-bestseller" target="_blank">Atomic Habit</a>. Then get to work in shifting your mindset with the <a href="https://timeisnotahealer.com/products/do-it-for-yourself-guided-journal-a-motivational-journal" target="_blank">Do It For Yourself (Guided Journal)</a>. It will be a game changer in helping you take action!</p>
+            <p class="content-rm">We get it though that sometimes making the leap to get back into the gym can be really hard. Like REALLY HARD. At TINAH, we recognize the importance of taking baby steps, but TAKING THEM nonetheless. We recommend the <a href="https://www.yogi-bare.co.uk/TINAH" target="_blank">Yogi Bare Ever Grip Mat</a> for getting started with basic body movements at home! PSST… Use code <span>TINAH</span> at checkout and you’ll get 15% off your order.</p>
+            <p class="content-rm">If you aren’t quite there mentally yet, we recommend checking out the books <a href="https://timeisnotahealer.com/products/dopamine-nation-finding-balance-in-the-age-of-indulgence" target="_blank">Dopamine Nation</a> and <a href="https://timeisnotahealer.com/products/atomic-habits-the-life-changing-million-copy-1-bestseller" target="_blank">Atomic Habit</a>. Then get to work on shifting your mindset with the <a href="https://timeisnotahealer.com/products/do-it-for-yourself-guided-journal-a-motivational-journal" target="_blank">Do It For Yourself (Guided Journal)</a>. It will be a game changer in helping you take action!</p>
             <p class="heading">Stress Management:</p>
             <p class="content-rm">Finding effective ways to manage stress is essential. Experiment with different stress-relief techniques to find what works best for you. This could include mindfulness meditation, deep breathing exercises, progressive muscle relaxation, or spending time in nature.</p>
             <p class="content-rm">One of TINAH’s favorite ways to process & release stress is through Journaling! Check out some from our favourite brands:</p>
@@ -80,24 +85,24 @@ let readMoreObj = {
 
     "c": `
         <p>
-            <span>TINAH’s Recommendations for You To help you take actionable steps toward your mental well-being, consider the following:</span></p>
+            <span>TINAH’s Recommendations to help you take actionable steps toward your mental well-being, consider the following:</span></p>
             <p class="heading">Break Down Your Goals:</p>
             <p class="content-rm">Start by breaking down your larger goals into smaller, more manageable steps. Focus on taking one step at a time rather than trying to tackle everything at once. Celebrate your progress, no matter how small.<br>
-            At TINAH we love the <a href="https://timeisnotahealer.com/products/do-it-for-yourself-guided-journal-a-motivational-journal" target="_blank">Do It For Yourself (Guided Journal)</a> to help get the chaos out of our mind & onto paper so that we can get more clear & organized in our actions. And to help follow through on the goals that we have, we love the <a href="https://timeisnotahealer.com/products/do-it-or-dont-a-boundary-creating-journal" target="_blank">Do It (or Don't): A Boundary-Creating Journal</a>!</p>
+           At TINAH, we love the <a href="https://timeisnotahealer.com/products/do-it-for-yourself-guided-journal-a-motivational-journal" target="_blank">Do It For Yourself (Guided Journal)</a> to help get the chaos out of our mind & onto paper so that we can get more clear & organized in our actions. And to help follow through on the goals that we have, we love the <a href="https://timeisnotahealer.com/products/do-it-or-dont-a-boundary-creating-journal" target="_blank">Do It (or Don't): A Boundary-Creating Journal</a>!</p>
             <p class="heading">Practice Self-Compassion:</p>
             <p class="content-rm">Be kind to yourself. Acknowledge that feeling stuck is part of the journey, not a personal failure. Treat yourself with the same compassion you would offer a friend in a similar situation.<br>
-            We at TINAH recommend the book, <a href="https://timeisnotahealer.com/products/a-toolkit-for-your-emotions-45-ways-to-feel-better" target="_blank">A tool kit for our emotions</a>, as it brings a lot of knowledge & understanding about how we process & manage our emotions - which is the first step to practicing self compassion! From there, you can put things into practice with the <a href="https://timeisnotahealer.com/products/a-hug-in-a-book-everyday-self-care-and-comforting-rituals-1" target="_blank">Hug in a Book Journal</a>!</p>
+            We at TINAH recommend the book, <a href="https://timeisnotahealer.com/products/a-toolkit-for-your-emotions-45-ways-to-feel-better" target="_blank">A tool Kit for Our Emotions</a>, as it brings a lot of knowledge & understanding about how we process & manage our emotions - which is the first step to practicing self compassion! From there, you can put things into practice with the <a href="https://timeisnotahealer.com/products/a-hug-in-a-book-everyday-self-care-and-comforting-rituals-1" target="_blank">Hug in a Book Journal</a>!</p>
             <p class="heading">Develop a Routine:</p>
             <p class="content-rm">Establishing a consistent routine can help create a sense of stability and progress. Integrate small, regular practices that align with your needs, such as mindfulness exercises, regular physical activity, or dedicated time for hobbies.<br>
-            At TINAH we understand how hard it is to create new habits and sometimes having a little guidance & support in doing so can be helpful. We love the book,<a href="https://timeisnotahealer.com/products/atomic-habits-the-life-changing-million-copy-1-bestseller" target="_blank">Atomic Habits</a>, for exactly this! And we recommend the first habit you try to implement is to implement to be around breathing. It will help calm your nervous system & make implementing other habits down the road easier. Check out the book <a href="https://timeisnotahealer.com/products/breath-the-new-science-of-a-lost-art-1" target="_blank">Breath: The New Science of a Lost Art</a> to learn all about it!</p>
+           At TINAH, we understand how hard it is to create new habits, and sometimes having a little guidance & support in doing so can be helpful. We love the book,<a href="https://timeisnotahealer.com/products/atomic-habits-the-life-changing-million-copy-1-bestseller" target="_blank">Atomic Habits</a>, for exactly this! We recommend the first habit you try to implement is around breathing. It will help calm your nervous system & make implementing other habits down the road easier. Check out the book <a href="https://timeisnotahealer.com/products/breath-the-new-science-of-a-lost-art-1" target="_blank">Breath: The New Science of a Lost Art</a> to learn all about it!</p>
             <p class="heading">Challenge Negative Thoughts:</p>
             <p class="content-rm">Identify and challenge any negative thoughts that are holding you back. Replace them with positive affirmations and remind yourself of your strengths and past successes.<br>
-            Don’t get us wrong, at TINAH, we know how hard it can be to stop the chaos that happens in our thoughts. A few helpful resources to get you start on tackling this challenge check out <a href="https://timeisnotahealer.com/products/the-little-book-of-mindfulness-10-minutes-a-day-to-less-stress-more-peace" target="_blank">The Little Book of Mindfulness</a>. The hardest part is self-awareness, but once you start to be more aware of the unhelpful thoughts that plague you, you now have the power to actively work on them!</p>
+            Don’t get us wrong, at TINAH, we know how hard it can be to stop the chaos that happens in our thoughts. A helpful resource to get you started on tackling this challenge is the <a href="https://timeisnotahealer.com/products/the-little-book-of-mindfulness-10-minutes-a-day-to-less-stress-more-peace" target="_blank">The Little Book of Mindfulness</a>. The hardest part is self-awareness, but once you start to be more aware of the unhelpful thoughts that plague you, you now have the power to actively work on them!</p>
             <p class="heading">Seek Professional Help:</p>
             <p class="content-rm">If you find it particularly difficult to move forward on your own, consider seeking help from a therapist or counselor. Professional guidance can provide you with strategies and support tailored to your specific situation.</p>
-            <p>We get that sometimes professional support isn’t as easily accessible. And we at TINAH do not want you to feel left without resources despite this. Some really great self-guided therapy, educational books we recommend are:</p>
+            <p>We get that sometimes professional support isn’t as easily accessible. We at TINAH do not want you to feel left without resources despite this. Some really great self-guided therapy, educational books we recommend are:</p>
             <ul>
-                <li><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain your brain: Cognitive Behavioural Therapy in 7 weeks</a></li>
+                <li><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain Your Brain: Cognitive Behavioural Therapy in 7 Weeks</a></li>
                 <li><a href="https://timeisnotahealer.com/products/scattered-minds-the-origins-and-healing-of-attention-deficit-disorder-1" target="_blank">Scattered Minds</a></li>
             </ul>
         </p>`,
@@ -150,21 +155,21 @@ let findOutMoreObj = {
 
     "d": `
         <p>
-            <span>TINAH’s Recommendations for You To continue thriving on your journey, consider the following actions:</span></p>
-            <p class="heading">Engage in Continuous Learning:</p>
-            <p>Keep exploring new areas of growth and healing. Whether it’s through books, workshops, or online courses, continuous learning can provide fresh perspectives and techniques.</p>
-            <p class="heading">Some resources for your to check out:</p>
+            <span>TINAH’s Recommendations for you to continue thriving on your journey, consider the following actions:</span></p>
+            <p class="heading">Engage in Continuous Learning: Keep exploring new areas of growth and healing. Whether it’s through books, workshops, or online courses, continuous learning can provide fresh perspectives and techniques.</p>
+         
+            <p class="heading">Some resources for you to check out:</p>
             <ul>
-                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain your brain: Cognitive Behavioural Therapy in 7 weeks</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/retrain-your-brain-cognitive-behavioural-therapy-in-7-weeks-a-workbook-for-managing-anxiety-and-depression" target="_blank">Retrain Your Brain: Cognitive Behavioural Therapy in 7 Weeks</a></li>
                 <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/scattered-minds-the-origins-and-healing-of-attention-deficit-disorder-1" target="_blank">Scattered Minds</a></li>
-                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/questions-to-empower-card-deck" target="_blank">Questions to empower card deck</a></li>
+                <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/questions-to-empower-card-deck" target="_blank">Questions to Empower Card Deck</a></li>
                 <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/recovery-max%E2%84%A2-ice-bath" target="_blank">Lumi Recovery Max Ice Bath</a></li>
                 <li><span class="journal">Journal: </span><a href="https://timeisnotahealer.com/products/premium-acupressure-mat-and-pillow-set-black" target="_blank">Unmera Acupressure Mat</a></li>
             </ul><br>
-            <p class="post-ul">Have you tried subconscious work before? Tapping into your subconscious mind can really help you take your healing to the next level and understand why you are the way you are, reprogram any limitations and beliefs, and figure out the next steps to achieving your goals. If this sounds interesting to you <a href="https://timeisnotahealer.com/products/to-be-magnetic-the-pathway-membership" target="_blank">The to-be magnetic pathway membership</a> might be something to consider. You’ll get access to workshops and guided meditations that will take you into your subconscious to start manifesting the life you really want. Find out more about it here!</p>
-            <p class="heading">Seek Professional Growth:</p>
-            <p>If you haven’t already, consider working with a coach, mentor, or therapist who can offer additional insights and support as you advance on your path.</p>
-            <p>You are doing an incredible job on your mental well-being journey. Remember, TINAH is here to support you with resources, tools, and a community to help you continue thriving. Explore the TINAH marketplace to find the perfect resources for your ongoing growth. <a href="https://www.timeisnotahealer.com" target="_blank">Click here to discover more!</a>
+            <p class="post-ul">Have you tried subconscious work before? Tapping into your subconscious mind can really help you take your healing to the next level and understand why you are the way you are, reprogram any limitations and beliefs, and figure out the next steps to achieving your goals. If this sounds interesting to you, <a href="https://timeisnotahealer.com/products/to-be-magnetic-the-pathway-membership" target="_blank">The To-Be Magnetic Pathway Membership</a> might be something to consider. You’ll get access to workshops and guided meditations that will take you into your subconscious to start manifesting the life you really want. Find out more about it here!</p>
+            <p class="heading">Seek Professional Growth: If you haven’t already, consider working with a coach, mentor, or therapist who can offer additional insights and support as you advance on your path.
+</p>
+            <p>You are doing an incredible job on your mental well-being journey. Remember, TINAH is here to support you with resources, tools, and a community to help you continue thriving. Explore the TINAH marketplace to find the perfect resources for your ongoing growth.<a href="https://www.timeisnotahealer.com" target="_blank">Click here to discover more!</a>
         </p>`
 };
 
@@ -172,25 +177,26 @@ let findOutMoreObj = {
 let alwaysVisibleObj = {
     "a": `
         <p>
-            Also, sometimes listening to or reading other peoples experiences can help you identify your own emotions, behaviors and feelings.<br>
+            Sometimes listening to or reading other peoples experiences can help you identify your own emotions, behaviors and feelings.<br>
             Have you listened to the TINAH Talks podcast? We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
         </p>`,
 
     "b": `
         <p>
-            Alternatively have you listened to the TINAH Talks podcast? We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
+            Alternatively, have you listened to the TINAH Talks podcast? We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
         </p>`,
 
     "c": `
         <p>
-            On a side note if you want to ease yourself in and do a bit more self-discovery before you take the action you could start with our TINAH Talks podcast. We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
+            On a side note, if you want to ease yourself in and do a bit more self-discovery before you take the action you could start with our TINAH Talks podcast. We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
         </p>`,
 
     "d": `
         <p>
-            If you want some inspiration of other things you can do to improve your mental wellbeing you could also check out the TINAH Talks podcast. We share our personal experiences with mental health over there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
+          Alternatively, have you listened to the TINAH Talks podcast? We share our personal experiences with mental health there and give even more advice on tools and techniques you can try to eliminate symptoms of some of the most common mental health challenges.
         </p>`
 };
+
 
 let linksObj = {
     "a": `
