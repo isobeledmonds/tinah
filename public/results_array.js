@@ -239,7 +239,22 @@ let linksObj = {
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"/>
             </svg> 
             Listen on Spotify
-        </a>`,
+        </a>
+        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
+        <defs>
+            <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#c873f5"></stop>
+                <stop offset="1" stop-color="#7b33bb"></stop>
+            </linearGradient>
+        </defs>
+        <path fill="current-color" d="M60,0A60,60 0 1,1 60,120A60,60 0 1,1 60,0Z" transform="translate(0, 3)"></path>
+        <path fill="#e36b2b" d="M74.9,79.7l.5-4.4a8.85417,8.85417,0,0,0,0-2.3,23,23,0,1,0-30.8,0,17.63337,17.63337,0,0,0,0,2.3l.5,4.4a28,28,0,1,1,29.8,0ZM73.2,94.9l.6-5.5a37.125,37.125,0,1,0-27.6-.1l.6,5.5a41.84979,41.84979,0,1,1,26.4.1Z" transform="translate(0, 7)"></path>
+        <circle cx="60" cy="52" r="10" fill="#e36b2b"></circle>
+        <path fill="#e36b2b" d="M55.9,66.5l-1.4.5a7.61676,7.61676,0,0,0-4.9,7.8l2.7,24.3A7.85757,7.85757,0,0,0,60,106a7.70934,7.70934,0,0,0,7.7-6.9l2.6-24.3A7.37888,7.37888,0,0,0,65.4,67l-1.3-.5A11.58079,11.58079,0,0,0,55.9,66.5Z"></path>
+    </svg>
+    Listen on Apple Podcasts
+</a>`,
 
     "c": `
         <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
@@ -253,7 +268,22 @@ let linksObj = {
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"/>
             </svg> 
             Listen on Spotify
-        </a>`,
+        </a>
+        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
+        <defs>
+            <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#c873f5"></stop>
+                <stop offset="1" stop-color="#7b33bb"></stop>
+            </linearGradient>
+        </defs>
+        <path fill="current-color" d="M60,0A60,60 0 1,1 60,120A60,60 0 1,1 60,0Z" transform="translate(0, 3)"></path>
+        <path fill="#e36b2b" d="M74.9,79.7l.5-4.4a8.85417,8.85417,0,0,0,0-2.3,23,23,0,1,0-30.8,0,17.63337,17.63337,0,0,0,0,2.3l.5,4.4a28,28,0,1,1,29.8,0ZM73.2,94.9l.6-5.5a37.125,37.125,0,1,0-27.6-.1l.6,5.5a41.84979,41.84979,0,1,1,26.4.1Z" transform="translate(0, 7)"></path>
+        <circle cx="60" cy="52" r="10" fill="#e36b2b"></circle>
+        <path fill="#e36b2b" d="M55.9,66.5l-1.4.5a7.61676,7.61676,0,0,0-4.9,7.8l2.7,24.3A7.85757,7.85757,0,0,0,60,106a7.70934,7.70934,0,0,0,7.7-6.9l2.6-24.3A7.37888,7.37888,0,0,0,65.4,67l-1.3-.5A11.58079,11.58079,0,0,0,55.9,66.5Z"></path>
+    </svg>
+    Listen on Apple Podcasts
+</a>`,
 
     "d": `
         <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
@@ -267,7 +297,22 @@ let linksObj = {
                 <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.669 11.538a.5.5 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686m.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858m.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288"/>
             </svg> 
             Listen on Spotify
-        </a>`
+        </a>
+        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
+        <defs>
+            <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#c873f5"></stop>
+                <stop offset="1" stop-color="#7b33bb"></stop>
+            </linearGradient>
+        </defs>
+        <path fill="current-color" d="M60,0A60,60 0 1,1 60,120A60,60 0 1,1 60,0Z" transform="translate(0, 3)"></path>
+        <path fill="#e36b2b" d="M74.9,79.7l.5-4.4a8.85417,8.85417,0,0,0,0-2.3,23,23,0,1,0-30.8,0,17.63337,17.63337,0,0,0,0,2.3l.5,4.4a28,28,0,1,1,29.8,0ZM73.2,94.9l.6-5.5a37.125,37.125,0,1,0-27.6-.1l.6,5.5a41.84979,41.84979,0,1,1,26.4.1Z" transform="translate(0, 7)"></path>
+        <circle cx="60" cy="52" r="10" fill="#e36b2b"></circle>
+        <path fill="#e36b2b" d="M55.9,66.5l-1.4.5a7.61676,7.61676,0,0,0-4.9,7.8l2.7,24.3A7.85757,7.85757,0,0,0,60,106a7.70934,7.70934,0,0,0,7.7-6.9l2.6-24.3A7.37888,7.37888,0,0,0,65.4,67l-1.3-.5A11.58079,11.58079,0,0,0,55.9,66.5Z"></path>
+    </svg>
+    Listen on Apple Podcasts
+</a>`
 };
 
 
