@@ -152,6 +152,7 @@ span.journal {
     margin-right: 3rem;
     text-decoration: none;
     color: #3A1409;
+    display: flex;
   }
 
   .links svg {
@@ -253,6 +254,8 @@ span.yellow {
   .links a{
     margin-right: 0.75rem;
   }
+
+
 }
 
 
