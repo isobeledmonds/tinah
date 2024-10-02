@@ -48,9 +48,11 @@ span.journal {
 
 .email-container h3 {
     font-family:'Tan Meringue' ;
-    width: 50%;
 }
 
+h3.healing-style-title {
+  line-height: 4rem;
+}
 
 .hidden {
     display: none;
@@ -159,6 +161,7 @@ h3.button {
    font-size: 1.25rem;
    padding-top: 1.5rem;
     text-align: left;
+    margin: 0 1rem;
   }
 
   .links a{
@@ -167,6 +170,10 @@ h3.button {
     color: #3A1409;
     display: flex;
   }
+
+  a.link.social-list-link.end {
+    margin-right: 0;
+}
 
   .links svg {
     margin-right: 0.5rem;
