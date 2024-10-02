@@ -211,7 +211,7 @@ let linksObj = {
             </svg> 
             Listen on Spotify
         </a>
-      <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+      <a href="https://podcasts.apple.com/us/podcast/tinah-talks-%7C-mental-health-and-wellbeing-stories-podcast/id1767581463" target="_blank" class="link social-list-link">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
         <defs>
             <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
@@ -240,7 +240,7 @@ let linksObj = {
             </svg> 
             Listen on Spotify
         </a>
-        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+        <a href="https://podcasts.apple.com/us/podcast/tinah-talks-%7C-mental-health-and-wellbeing-stories-podcast/id1767581463" target="_blank" class="link social-list-link">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
         <defs>
             <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
@@ -269,7 +269,7 @@ let linksObj = {
             </svg> 
             Listen on Spotify
         </a>
-        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+        <a href="https://podcasts.apple.com/us/podcast/tinah-talks-%7C-mental-health-and-wellbeing-stories-podcast/id1767581463" target="_blank" class="link social-list-link">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
         <defs>
             <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
@@ -298,7 +298,7 @@ let linksObj = {
             </svg> 
             Listen on Spotify
         </a>
-        <a href="https://www.youtube.com/@timeisnotahealer" target="_blank" class="link social-list-link">
+        <a href="https://podcasts.apple.com/us/podcast/tinah-talks-%7C-mental-health-and-wellbeing-stories-podcast/id1767581463" target="_blank" class="link social-list-link">
     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" fill="currentColor" class="icon icon-podcasts" viewBox="0 0 120 120" id="podcasts">
         <defs>
             <linearGradient id="a" x1="60" x2="60" y1="-104.13" y2="15.87" gradientTransform="translate(0 104)" gradientUnits="userSpaceOnUse">
