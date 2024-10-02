@@ -48,6 +48,7 @@ span.journal {
 
 .email-container h3 {
     font-family:'Tan Meringue' ;
+    width: 50%;
 }
 
 
@@ -81,21 +82,33 @@ span.journal {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    background-image: url(../resources/start.png);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     padding: 2rem;
     width: 15%;
   }
   
+
+  .button-div {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../resources/start.png);
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h3.button {
+  width: 45%;
+}
+
   .fom {
     padding-top: 2rem;
   }
   
 
 
-.button:hover{
+.button-div:hover{
     animation: bounceDown 0.5s ease;
     animation-iteration-count: 1;
   }
@@ -118,7 +131,7 @@ span.journal {
     }
   }
 
-.button:active{
+.button-div:active{
     animation: click 0.2s ease;
 }
 @keyframes click {
